@@ -1,0 +1,76 @@
+FC Bayern München        avg: 955.182   max: 2.840.255  min: 146.690   average time: 9:30  games: 102
+Borussia Dortmund        avg: 606.410   max: 2.840.255  min: 101.515   average time: 9:20  games: 103
+Bayer 04 Leverkusen      avg: 355.654   max: 1.739.479  min: 21.519    average time: 7:58  games: 102
+RB Leipzig               avg: 283.294   max: 2.504.065  min: 16.898    average time: 8:04  games: 104
+Eintracht Frankfurt      avg: 268.331   max: 1.618.152  min: 20.954    average time: 7:54  games: 105
+VfB Stuttgart            avg: 268.103   max: 1.371.196  min: 23.422    average time: 7:49  games: 107
+Borussia Mönchengladbach avg: 257.065   max: 1.470.170  min: 24.334    average time: 8:17  games: 102
+1. FC Heidenheim 1846    avg: 256.878   max: 1.231.011  min: 22.784    average time: 7:59  games: 38
+Hamburger SV             avg: 254.345   max: 1.371.196  min: 29.081    average time: 7:21  games: 50
+SV Darmstadt 98          avg: 213.415   max: 2.555.042  min: 5.991     average time: 7:50  games: 50
+FC Schalke 04            avg: 213.317   max: 969.646    min: 26.487    average time: 7:44  games: 91
+SV Werder Bremen         avg: 209.985   max: 1.300.154  min: 13.944    average time: 7:55  games: 84
+1. FC Union Berlin       avg: 209.611   max: 1.460.349  min: 19.931    average time: 7:37  games: 102
+Jahn Regensburg          avg: 202.087   max: 969.485    min: 10.543    average time: 6:57  games: 8
+SC Freiburg              avg: 197.999   max: 1.219.850  min: 12.665    average time: 7:20  games: 103
+VfL Bochum 1848          avg: 193.541   max: 1.830.830  min: 15.822    average time: 7:27  games: 100
+1. FC Köln               avg: 193.258   max: 1.358.441  min: 20.311    average time: 7:43  games: 99
+1. FC Kaiserslautern     avg: 191.424   max: 707.632    min: 18.114    average time: 7:25  games: 25
+Hertha BSC               avg: 187.936   max: 1.462.604  min: 15.822    average time: 7:29  games: 84
+SV Sandhausen            avg: 173.870   max: 481.827    min: 11.350    average time: 6:06  games: 11
+VfL Wolfsburg            avg: 173.249   max: 1.679.560  min: 16.332    average time: 7:20  games: 102
+1. FC Magdeburg          avg: 169.719   max: 290.063    min: 56.060    average time: 7:42  games: 9
+1. FSV Mainz 05          avg: 162.042   max: 1.146.652  min: 13.944    average time: 7:21  games: 101
+TSG 1899 Hoffenheim      avg: 159.936   max: 1.035.068  min: 12.665    average time: 7:28  games: 101
+Fortuna Düsseldorf       avg: 153.840   max: 808.762    min: 5.991     average time: 6:58  games: 24
+SC Paderborn 07          avg: 150.368   max: 546.961    min: 28.356    average time: 6:53  games: 12
+Eintracht Braunschweig   avg: 143.827   max: 594.800    min: 39.779    average time: 6:52  games: 8
+Arminia Bielefeld        avg: 143.509   max: 1.222.889  min: 12.721    average time: 6:55  games: 44
+FC Augsburg              avg: 141.974   max: 1.299.093  min: 14.494    average time: 7:20  games: 99
+Dynamo Dresden           avg: 138.146   max: 488.236    min: 24.930    average time: 5:44  games: 8
+FC St. Pauli             avg: 136.217   max: 539.887    min: 10.543    average time: 7:15  games: 32
+Hansa Rostock            avg: 130.759   max: 391.923    min: 21.491    average time: 6:51  games: 14
+Holstein Kiel            avg: 128.544   max: 416.215    min: 26.447    average time: 7:05  games: 10
+Hannover 96              avg: 118.961   max: 600.702    min: 29.475    average time: 6:40  games: 13
+Karlsruher SC            avg: 103.399   max: 320.400    min: 6.375     average time: 6:52  games: 12
+SpVgg Greuther Fürth     avg: 101.549   max: 699.084    min: 14.239    average time: 6:22  games: 38
+1. FC Nürnberg           avg: 95.318    max: 231.555    min: 13.933    average time: 6:38  games: 19
+
+max 5 games:
+1. FC Saarbrücken        avg: 1.126.946 max: 2.654.296  min: 110.650   average time: 6:04  games: 5
+Preußen Münster          avg: 834.950   max: 834.950    min: 834.950   average time: 6:15  games: 1
+TSV 1860 München         avg: 651.439   max: 651.439    min: 651.439   average time: 5:38  games: 1
+SV Wehen Wiesbaden       avg: 577.343   max: 1.222.889  min: 138.243   average time: 7:45  games: 4
+FC Viktoria Köln         avg: 550.042   max: 1.167.049  min: 157.192   average time: 6:03  games: 3
+1. FC Lok Leipzig        avg: 517.509   max: 517.509    min: 517.509   average time: 6:07  games: 1
+TSV Schott Mainz         avg: 476.124   max: 476.124    min: 476.124   average time: 6:12  games: 1
+Rot-Weiss Essen          avg: 330.085   max: 330.085    min: 330.085   average time: 6:11  games: 1
+FC 08 Homburg            avg: 281.718   max: 481.261    min: 126.259   average time: 5:23  games: 3
+SV Elversberg            avg: 261.558   max: 669.782    min: 25.513    average time: 5:52  games: 3
+SpVgg Bayreuth           avg: 250.211   max: 250.211    min: 250.211   average time: 6:17  games: 1
+SpVgg Unterhaching       avg: 220.769   max: 252.547    min: 188.992   average time: 6:09  games: 2
+FC Teutonia Ottensen     avg: 212.956   max: 231.886    min: 194.026   average time: 6:11  games: 2
+Energie Cottbus          avg: 175.027   max: 175.027    min: 175.027   average time: 6:11  games: 1
+TSG Balingen             avg: 150.468   max: 150.468    min: 150.468   average time: 6:05  games: 1
+FC Ingolstadt 04         avg: 148.883   max: 363.019    min: 27.467    average time: 6:16  games: 3
+Bremer SV                avg: 142.651   max: 142.651    min: 142.651   average time: 5:27  games: 1
+VfL Osnabrück            avg: 132.161   max: 217.837    min: 70.159    average time: 6:59  games: 3
+TuS Bersenbrück          avg: 127.788   max: 127.788    min: 127.788   average time: 5:57  games: 1
+FC-Astoria Walldorf      avg: 118.834   max: 118.834    min: 118.834   average time: 6:05  games: 1
+SV Oberachern            avg: 117.510   max: 138.708    min: 96.312    average time: 5:55  games: 2
+Stuttgarter Kickers      avg: 115.907   max: 166.204    min: 65.611    average time: 4:27  games: 2
+Carl Zeiss Jena          avg: 108.834   max: 174.488    min: 43.181    average time: 4:32  games: 2
+TuS Makkabi Berlin       avg: 106.788   max: 106.788    min: 106.788   average time: 6:09  games: 1
+VfB Lübeck               avg: 84.825    max: 126.174    min: 43.476    average time: 5:52  games: 2
+SV Rödinghausen          avg: 84.546    max: 84.546     min: 84.546    average time: 5:56  games: 1
+Rostocker FC             avg: 82.810    max: 82.810     min: 82.810    average time: 5:05  games: 1
+Chemnitzer FC            avg: 82.504    max: 82.504     min: 82.504    average time: 6:16  games: 1
+FC Rot-Weiß Koblenz      avg: 82.414    max: 82.414     min: 82.414    average time: 6:05  games: 1
+FC Erzgebirge Aue        avg: 77.639    max: 142.590    min: 41.171    average time: 6:46  games: 5
+TSG Neustrelitz          avg: 70.104    max: 70.104     min: 70.104    average time: 6:17  games: 1
+SV Waldhof Mannheim      avg: 65.062    max: 65.062     min: 65.062    average time: 5:18  games: 1
+1. FC Kaan-Marienborn    avg: 60.665    max: 60.665     min: 60.665    average time: 4:49  games: 1
+BW Lohne                 avg: 55.240    max: 55.240     min: 55.240    average time: 6:17  games: 1
+Kickers Offenbach        avg: 36.007    max: 36.007     min: 36.007    average time: 5:44  games: 1
+FC Viktoria 1889 Berlin  avg: 21.163    max: 21.163     min: 21.163    average time: 2:05  games: 1
+BSV SW Rehden            avg: 11.350    max: 11.350     min: 11.350    average time: 2:16  games: 1

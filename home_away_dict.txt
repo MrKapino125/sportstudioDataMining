@@ -1,0 +1,2427 @@
+1. FC Heidenheim 1846:
+  VfL Wolfsburg:
+    home: 44.173
+    away: 127.348
+  TSG 1899 Hoffenheim:
+    home: 156.915
+    away: 52.591
+  Borussia Dortmund:
+    home: 187.701
+    away: 853.450
+  SV Werder Bremen:
+    home: 298.546, 22.784
+    away: 126.218
+  Bayer 04 Leverkusen:
+    home: 581.071
+    away: 476.587
+  1. FC Union Berlin:
+    home: 229.614
+    away: 101.648, 70.780
+  Eintracht Frankfurt:
+    home: 146.195
+    away: 231.952
+  FC Augsburg:
+    home: 183.375
+    away: 38.743
+  Borussia Mönchengladbach:
+    home: 132.923
+    away: 102.691, 158.976
+  VfB Stuttgart:
+    home: 353.143
+    away: 510.103
+  FC Bayern München:
+    home: 1.231.011
+    away: 994.332
+  VfL Bochum 1848:
+    home: 28.545
+    away: 
+  RB Leipzig:
+    home: 
+    away: 102.275
+  SV Darmstadt 98:
+    home: 70.067
+    away: 
+  1. FSV Mainz 05:
+    home: 
+    away: 47.402
+  SC Freiburg:
+    home: 223.677
+    away: 
+  1. FC Köln:
+    home: 
+    away: 104.163
+  Rostocker FC:
+    home: 
+    away: 82.810
+  Jahn Regensburg:
+    home: 
+    away: 969.485
+  1. FC Kaiserslautern:
+    home: 
+    away: 300.402
+  FC St. Pauli:
+    home: 
+    away: 23.960
+  Hamburger SV:
+    home: 223.911
+    away: 
+  FC Schalke 04:
+    home: 28.690
+    away: 143.117
+1. FC Köln:
+  Hertha BSC:
+    home: 191.901, 222.360
+    away: 156.652, 50.909
+  FC Bayern München:
+    home: 222.742, 989.743, 574.636
+    away: 1.358.441, 265.324
+  VfL Bochum 1848:
+    home: 156.225, 40.759, 175.383
+    away: 60.943, 28.227, 126.268
+  SC Freiburg:
+    home: 35.443, 78.284
+    away: 136.733, 34.631, 85.573
+  RB Leipzig:
+    home: 825.007, 66.336, 206.592
+    away: 93.794, 377.748, 321.635
+  Eintracht Frankfurt:
+    home: 235.689, 116.526, 245.254
+    away: 70.880, 108.459, 196.105
+  SpVgg Greuther Fürth:
+    home: 108.707
+    away: 21.658
+  TSG 1899 Hoffenheim:
+    home: 32.404, 58.604, 217.430
+    away: 77.424, 125.375, 91.431
+  Bayer 04 Leverkusen:
+    home: 241.661, 62.900, 758.655
+    away: 78.061, 189.470, 626.324
+  Borussia Dortmund:
+    home: 197.463, 357.415, 404.208
+    away: 252.598, 1.032.592, 655.538
+  1. FC Union Berlin:
+    home: 282.068, 37.788
+    away: 20.311, 54.498, 189.070
+  1. FSV Mainz 05:
+    home: 81.697, 109.689, 67.302
+    away: 53.321, 39.936
+  Borussia Mönchengladbach:
+    home: 109.993, 43.937, 352.384
+    away: 275.135, 232.593, 155.675
+  Arminia Bielefeld:
+    home: 58.843
+    away: 27.125
+  FC Augsburg:
+    home: 88.109, 80.336, 66.453
+    away: 37.092, 56.365, 116.308
+  VfL Wolfsburg:
+    home: 31.143, 24.008, 91.877
+    away: 84.464, 69.908, 102.383
+  VfB Stuttgart:
+    home: 51.354, 156.152, 143.111
+    away: 141.326, 92.183, 102.751
+  FC Schalke 04:
+    home: 280.275
+    away: 71.990
+  SV Werder Bremen:
+    home: 326.213, 132.508
+    away: 51.551, 186.525
+  SV Darmstadt 98:
+    home: 
+    away: 90.184
+  1. FC Heidenheim 1846:
+    home: 104.163
+    away: 
+  1. FC Kaiserslautern:
+    home: 
+    away: 339.884
+  VfL Osnabrück:
+    home: 
+    away: 217.837
+  Jahn Regensburg:
+    home: 
+    away: 159.613
+1. FC Union Berlin:
+  Bayer 04 Leverkusen:
+    home: 136.032, 141.670, 376.033
+    away: 33.779, 161.824, 813.429
+  TSG 1899 Hoffenheim:
+    home: 24.857, 48.308, 185.754
+    away: 138.636, 62.381, 111.435
+  Borussia Mönchengladbach:
+    home: 177.414, 220.119, 192.188
+    away: 38.855, 134.113
+  FC Augsburg:
+    home: 72.017, 49.198, 173.842
+    away: 31.068, 43.554
+  Borussia Dortmund:
+    home: 239.191, 186.371, 558.631
+    away: 686.751, 567.311, 882.912
+  Arminia Bielefeld:
+    home: 63.394
+    away: 28.227
+  1. FSV Mainz 05:
+    home: 29.851, 61.988, 706.623
+    away: 102.319, 42.907, 195.699
+  VfL Wolfsburg:
+    home: 66.741, 48.865, 144.905, 388.885
+    away: 22.366, 50.344, 123.048
+  VfB Stuttgart:
+    home: 44.995, 56.719, 411.984
+    away: 77.509, 43.021, 446.864, 256.381
+  FC Bayern München:
+    home: 915.751, 341.794
+    away: 360.492, 995.991, 1.460.349
+  1. FC Köln:
+    home: 20.311, 54.498, 189.070
+    away: 282.068, 37.788
+  Hertha BSC:
+    home: 131.272, 136.693
+    away: 363.984, 146.502
+  Eintracht Frankfurt:
+    home: 36.441, 135.355, 198.801
+    away: 107.001, 106.481, 522.438, 91.446
+  RB Leipzig:
+    home: 71.698, 375.821, 758.532
+    away: 101.774, 324.360, 185.481
+  SpVgg Greuther Fürth:
+    home: 19.931
+    away: 57.697
+  SC Freiburg:
+    home: 39.471, 192.055
+    away: 75.223, 99.889, 100.480
+  VfL Bochum 1848:
+    home: 35.735, 83.713
+    away: 45.086, 87.561, 109.245
+  FC Schalke 04:
+    home: 170.172
+    away: 142.868
+  SV Werder Bremen:
+    home: 166.415, 115.737
+    away: 77.614, 211.901
+  SV Darmstadt 98:
+    home: 88.172
+    away: 504.539
+  1. FC Heidenheim 1846:
+    home: 101.648, 70.780
+    away: 229.614
+  FC-Astoria Walldorf:
+    home: 
+    away: 118.834
+  Chemnitzer FC:
+    home: 
+    away: 82.504
+1. FSV Mainz 05:
+  RB Leipzig:
+    home: 147.086, 16.898, 150.638
+    away: 112.611, 87.961, 145.713
+  VfL Bochum 1848:
+    home: 21.275, 38.240, 61.966
+    away: 179.025, 113.396, 71.260
+  SpVgg Greuther Fürth:
+    home: 64.816
+    away: 19.240
+  TSG 1899 Hoffenheim:
+    home: 18.194, 37.083
+    away: 65.480, 26.855, 56.288
+  SC Freiburg:
+    home: 60.257, 84.587, 112.024
+    away: 23.624, 39.229
+  Bayer 04 Leverkusen:
+    home: 98.121, 76.949, 265.456
+    away: 136.827, 96.981, 442.615
+  1. FC Union Berlin:
+    home: 102.319, 42.907, 195.699
+    away: 29.851, 61.988, 706.623
+  Borussia Dortmund:
+    home: 163.955, 131.921
+    away: 136.072, 470.106, 302.442
+  FC Augsburg:
+    home: 52.379, 22.644, 71.906
+    away: 105.869, 29.413, 70.560
+  Arminia Bielefeld:
+    home: 49.980
+    away: 35.535
+  Borussia Mönchengladbach:
+    home: 104.585, 106.513, 69.357
+    away: 116.026, 79.846, 168.855
+  1. FC Köln:
+    home: 53.321, 39.936
+    away: 81.697, 109.689, 67.302
+  VfB Stuttgart:
+    home: 32.586, 298.301, 372.691
+    away: 53.425, 35.973, 374.491
+  VfL Wolfsburg:
+    home: 33.176, 20.370, 68.256
+    away: 60.697, 71.591
+  FC Bayern München:
+    home: 168.452, 1.146.652, 962.399, 1.083.511
+    away: 369.644, 841.738, 1.104.621
+  Hertha BSC:
+    home: 46.812, 17.824
+    away: 61.856, 28.001, 251.494
+  Eintracht Frankfurt:
+    home: 27.147, 87.780, 176.192
+    away: 31.413, 191.055, 122.147
+  SV Werder Bremen:
+    home: 177.741, 103.695
+    away: 13.944, 377.984
+  FC Schalke 04:
+    home: 448.160
+    away: 120.393
+  SV Darmstadt 98:
+    home: 56.705
+    away: 52.779
+  1. FC Heidenheim 1846:
+    home: 47.402
+    away: 
+  SV Elversberg:
+    home: 
+    away: 89.381
+  VfB Lübeck:
+    home: 
+    away: 43.476
+  FC Erzgebirge Aue:
+    home: 
+    away: 44.344
+Arminia Bielefeld:
+  SC Freiburg:
+    home: 74.965
+    away: 29.497
+  SpVgg Greuther Fürth:
+    home: 37.848
+    away: 60.135
+  Eintracht Frankfurt:
+    home: 127.291
+    away: 39.010
+  Borussia Mönchengladbach:
+    home: 36.279
+    away: 161.984
+  TSG 1899 Hoffenheim:
+    home: 38.231
+    away: 18.151
+  1. FC Union Berlin:
+    home: 28.227
+    away: 63.394
+  Bayer 04 Leverkusen:
+    home: 160.036
+    away: 36.063
+  FC Augsburg:
+    home: 22.685
+    away: 46.156
+  Borussia Dortmund:
+    home: 406.605
+    away: 101.515
+  1. FSV Mainz 05:
+    home: 35.535
+    away: 49.980
+  VfB Stuttgart:
+    home: 25.993
+    away: 35.065, 179.750
+  VfL Wolfsburg:
+    home: 98.485
+    away: 31.596
+  FC Bayern München:
+    home: 853.131
+    away: 458.998
+  1. FC Köln:
+    home: 27.125
+    away: 58.843
+  Hertha BSC:
+    home: 84.125
+    away: 39.506
+  VfL Bochum 1848:
+    home: 61.417, 197.088
+    away: 47.825
+  RB Leipzig:
+    home: 87.396
+    away: 76.686
+  Hamburger SV:
+    home: 358.725, 99.222
+    away: 
+  SV Wehen Wiesbaden:
+    home: 516.039
+    away: 1.222.889
+  1. FC Kaiserslautern:
+    home: 49.927
+    away: 
+  FC St. Pauli:
+    home: 12.721
+    away: 
+  Hannover 96:
+    home: 
+    away: 31.342
+  Hansa Rostock:
+    home: 
+    away: 86.927
+Borussia Dortmund:
+  Eintracht Frankfurt:
+    home: 1.618.152, 882.755, 654.246
+    away: 582.174, 459.126, 1.095.595
+  SC Freiburg:
+    home: 349.269, 382.859, 469.906
+    away: 416.069, 731.228, 542.897
+  TSG 1899 Hoffenheim:
+    home: 685.726, 474.763, 743.290, 540.958
+    away: 181.693, 324.567, 677.374
+  Bayer 04 Leverkusen:
+    home: 289.289, 1.427.022
+    away: 941.785, 531.324, 1.031.482
+  1. FC Union Berlin:
+    home: 686.751, 567.311, 882.912
+    away: 239.191, 186.371, 558.631
+  Borussia Mönchengladbach:
+    home: 1.007.678, 522.166, 790.768
+    away: 793.820, 427.095
+  FC Augsburg:
+    home: 370.480, 244.379
+    away: 190.659, 813.168, 318.142
+  1. FSV Mainz 05:
+    home: 136.072, 470.106, 302.442
+    away: 163.955, 131.921
+  Arminia Bielefeld:
+    home: 101.515
+    away: 406.605
+  1. FC Köln:
+    home: 252.598, 1.032.592, 655.538
+    away: 197.463, 357.415, 404.208
+  RB Leipzig:
+    home: 223.633, 590.734, 629.922
+    away: 855.329, 358.468, 488.786
+  VfB Stuttgart:
+    home: 292.905, 183.052, 534.334
+    away: 233.891, 1.229.018, 764.163, 984.293
+  VfL Wolfsburg:
+    home: 138.513, 1.301.142, 276.791
+    away: 570.523, 117.048, 216.819
+  FC Bayern München:
+    home: 2.840.255, 2.356.710, 1.795.359
+    away: 922.827, 1.643.343, 1.624.171
+  VfL Bochum 1848:
+    home: 499.633, 372.090, 715.643
+    away: 312.736, 639.146, 330.295, 716.872
+  SpVgg Greuther Fürth:
+    home: 229.813
+    away: 128.541
+  Hertha BSC:
+    home: 177.295, 810.355
+    away: 344.968, 291.631
+  SV Werder Bremen:
+    home: 822.906, 395.483
+    away: 211.022, 393.779
+  FC Schalke 04:
+    home: 157.614
+    away: 733.175
+  1. FC Heidenheim 1846:
+    home: 853.450
+    away: 187.701
+  SV Darmstadt 98:
+    home: 
+    away: 990.294
+  TSV Schott Mainz:
+    home: 
+    away: 476.124
+  Hannover 96:
+    home: 
+    away: 600.702
+  TSV 1860 München:
+    home: 
+    away: 651.439
+Bayer 04 Leverkusen:
+  1. FC Union Berlin:
+    home: 33.779, 161.824, 813.429
+    away: 136.032, 141.670, 376.033
+  Borussia Mönchengladbach:
+    home: 555.663, 222.622, 349.066
+    away: 289.944, 142.241, 645.323
+  FC Augsburg:
+    home: 54.088, 149.263
+    away: 162.157, 55.374, 356.984
+  Borussia Dortmund:
+    home: 941.785, 531.324, 1.031.482
+    away: 289.289, 1.427.022
+  VfB Stuttgart:
+    home: 92.215, 26.863, 1.066.536
+    away: 140.417, 153.546, 608.280
+  1. FSV Mainz 05:
+    home: 136.827, 96.981, 442.615
+    away: 98.121, 76.949, 265.456
+  Arminia Bielefeld:
+    home: 36.063
+    away: 160.036
+  FC Bayern München:
+    home: 1.303.326, 1.368.921, 1.739.479
+    away: 198.775, 945.393, 1.407.581
+  1. FC Köln:
+    home: 78.061, 189.470, 626.324
+    away: 241.661, 62.900, 758.655
+  VfL Wolfsburg:
+    home: 127.507, 34.606, 936.491
+    away: 36.349, 55.993, 279.192
+  Hertha BSC:
+    home: 29.526, 121.575
+    away: 85.054, 43.720
+  VfL Bochum 1848:
+    home: 21.519, 71.256, 653.305
+    away: 50.995, 248.460
+  RB Leipzig:
+    home: 57.957, 481.638, 796.640
+    away: 139.253, 39.924, 811.005
+  SpVgg Greuther Fürth:
+    home: 138.153
+    away: 33.380
+  Eintracht Frankfurt:
+    home: 37.708, 257.136, 835.624
+    away: 252.215, 139.681
+  TSG 1899 Hoffenheim:
+    home: 73.662, 63.756, 877.479
+    away: 59.032, 55.417, 252.460
+  SC Freiburg:
+    home: 26.088, 129.760, 644.443
+    away: 354.430, 111.265, 710.339
+  SV Werder Bremen:
+    home: 46.420
+    away: 147.700, 298.048
+  FC Schalke 04:
+    home: 53.486
+    away: 107.973
+  SV Darmstadt 98:
+    home: 498.400
+    away: 227.445
+  1. FC Heidenheim 1846:
+    home: 476.587
+    away: 581.071
+  Fortuna Düsseldorf:
+    home: 808.762
+    away: 
+  SC Paderborn 07:
+    home: 420.592
+    away: 
+  SV Sandhausen:
+    home: 
+    away: 384.668
+  FC Teutonia Ottensen:
+    home: 
+    away: 194.026
+  SV Elversberg:
+    home: 
+    away: 669.782
+FC Bayern München:
+  Borussia Mönchengladbach:
+    home: 258.753, 1.470.170, 934.679
+    away: 606.295, 926.519, 1.397.743
+  1. FC Köln:
+    home: 1.358.441, 265.324
+    away: 222.742, 989.743, 574.636
+  Hertha BSC:
+    home: 1.462.604, 1.018.101
+    away: 293.056, 484.800
+  RB Leipzig:
+    home: 444.329, 1.149.522, 930.818
+    away: 2.504.065, 636.855, 1.416.115
+  VfL Bochum 1848:
+    home: 1.414.928, 614.189, 1.220.449
+    away: 444.924, 1.307.987, 1.830.830
+  SpVgg Greuther Fürth:
+    home: 517.660
+    away: 699.084
+  Eintracht Frankfurt:
+    home: 1.331.413, 641.017
+    away: 725.471, 872.598, 1.384.798
+  Bayer 04 Leverkusen:
+    home: 198.775, 945.393, 1.407.581
+    away: 1.303.326, 1.368.921, 1.739.479
+  TSG 1899 Hoffenheim:
+    home: 1.035.068, 562.628, 795.648
+    away: 190.932, 307.808
+  1. FC Union Berlin:
+    home: 360.492, 995.991, 1.460.349
+    away: 915.751, 341.794
+  SC Freiburg:
+    home: 605.568, 317.867, 1.219.850, 1.125.206
+    away: 294.276, 750.455, 900.664
+  FC Augsburg:
+    home: 203.205, 981.025, 1.299.093
+    away: 146.690, 229.203, 674.714, 878.181
+  Arminia Bielefeld:
+    home: 458.998
+    away: 853.131
+  Borussia Dortmund:
+    home: 922.827, 1.643.343, 1.624.171
+    away: 2.840.255, 2.356.710, 1.795.359
+  1. FSV Mainz 05:
+    home: 369.644, 841.738, 1.104.621
+    away: 168.452, 1.146.652, 962.399, 1.083.511
+  VfB Stuttgart:
+    home: 280.436, 270.623, 924.033
+    away: 556.592, 991.874
+  VfL Wolfsburg:
+    home: 429.709, 1.633.600
+    away: 266.487, 1.679.560, 959.431
+  SV Werder Bremen:
+    home: 283.581, 1.300.154
+    away: 818.831, 1.199.468
+  FC Schalke 04:
+    home: 969.646
+    away: 617.961
+  SV Darmstadt 98:
+    home: 2.555.042
+    away: 731.555
+  1. FC Heidenheim 1846:
+    home: 994.332
+    away: 1.231.011
+  1. FC Saarbrücken:
+    home: 
+    away: 2.654.296
+  Preußen Münster:
+    home: 
+    away: 834.950
+  FC Viktoria Köln:
+    home: 
+    away: 1.167.049
+Borussia Mönchengladbach:
+  FC Bayern München:
+    home: 606.295, 926.519, 1.397.743
+    away: 258.753, 1.470.170, 934.679
+  Bayer 04 Leverkusen:
+    home: 289.944, 142.241, 645.323
+    away: 555.663, 222.622, 349.066
+  1. FC Union Berlin:
+    home: 38.855, 134.113
+    away: 177.414, 220.119, 192.188
+  Arminia Bielefeld:
+    home: 161.984
+    away: 36.279
+  FC Augsburg:
+    home: 121.942, 81.851, 128.305
+    away: 57.435, 67.029, 464.024
+  Borussia Dortmund:
+    home: 793.820, 427.095
+    away: 1.007.678, 522.166, 790.768
+  VfL Wolfsburg:
+    home: 68.344, 77.842, 148.307, 296.514
+    away: 160.859, 28.079, 150.783
+  VfB Stuttgart:
+    home: 205.602, 92.609, 294.130
+    away: 525.389, 167.723
+  Hertha BSC:
+    home: 66.158, 44.996
+    away: 125.592, 141.556
+  VfL Bochum 1848:
+    home: 97.207, 67.417, 126.143
+    away: 105.720, 31.220, 142.130
+  1. FSV Mainz 05:
+    home: 116.026, 79.846, 168.855
+    away: 104.585, 106.513, 69.357
+  SpVgg Greuther Fürth:
+    home: 56.081
+    away: 35.719
+  1. FC Köln:
+    home: 275.135, 232.593, 155.675
+    away: 109.993, 43.937, 352.384
+  SC Freiburg:
+    home: 349.809, 103.525, 197.141
+    away: 45.506, 24.334, 165.197
+  RB Leipzig:
+    home: 76.789, 418.654, 179.306
+    away: 153.137, 56.093, 274.546
+  Eintracht Frankfurt:
+    home: 158.783, 325.405
+    away: 88.028, 172.696, 459.860
+  TSG 1899 Hoffenheim:
+    home: 62.045, 204.545, 68.006
+    away: 48.773, 86.471
+  FC Schalke 04:
+    home: 126.215
+    away: 810.973
+  SV Werder Bremen:
+    home: 184.511, 131.393
+    away: 611.412
+  SV Darmstadt 98:
+    home: 42.119
+    away: 320.670, 110.917
+  1. FC Heidenheim 1846:
+    home: 102.691, 158.976
+    away: 132.923
+  1. FC Saarbrücken:
+    home: 
+    away: 1.209.641
+  TuS Bersenbrück:
+    home: 
+    away: 127.788
+  SV Oberachern:
+    home: 
+    away: 138.708
+Eintracht Frankfurt:
+  Borussia Dortmund:
+    home: 582.174, 459.126, 1.095.595
+    away: 1.618.152, 882.755, 654.246
+  FC Augsburg:
+    home: 94.286, 67.967
+    away: 34.545, 64.210, 142.560
+  Arminia Bielefeld:
+    home: 39.010
+    away: 127.291
+  VfB Stuttgart:
+    home: 175.676, 40.918, 613.396
+    away: 39.833, 52.715, 501.540
+  VfL Wolfsburg:
+    home: 44.292, 20.954, 133.777
+    away: 148.822, 246.045, 166.347
+  1. FC Köln:
+    home: 70.880, 108.459, 196.105
+    away: 235.689, 116.526, 245.254
+  FC Bayern München:
+    home: 725.471, 872.598, 1.384.798
+    away: 1.331.413, 641.017
+  Hertha BSC:
+    home: 49.293, 115.227
+    away: 87.205, 414.801
+  VfL Bochum 1848:
+    home: 94.360, 97.608, 80.970
+    away: 130.775, 32.062, 81.151
+  RB Leipzig:
+    home: 221.354, 873.343
+    away: 43.821, 101.225, 141.438, 424.615
+  SpVgg Greuther Fürth:
+    home: 25.014
+    away: 140.966
+  SC Freiburg:
+    home: 52.200, 206.993, 126.377
+    away: 184.941, 175.550, 155.296
+  1. FC Union Berlin:
+    home: 107.001, 106.481, 522.438, 91.446
+    away: 36.441, 135.355, 198.801
+  TSG 1899 Hoffenheim:
+    home: 26.624, 187.779, 331.516
+    away: 32.515, 127.934, 140.188
+  Bayer 04 Leverkusen:
+    home: 252.215, 139.681
+    away: 37.708, 257.136, 835.624
+  Borussia Mönchengladbach:
+    home: 88.028, 172.696, 459.860
+    away: 158.783, 325.405
+  1. FSV Mainz 05:
+    home: 31.413, 191.055, 122.147
+    away: 27.147, 87.780, 176.192
+  SV Werder Bremen:
+    home: 155.927, 180.123
+    away: 561.545, 230.300
+  FC Schalke 04:
+    home: 156.109
+    away: 245.244
+  SV Darmstadt 98:
+    home: 300.555, 311.954
+    away: 132.963
+  1. FC Heidenheim 1846:
+    home: 231.952
+    away: 146.195
+  1. FC Saarbrücken:
+    home: 
+    away: 952.512
+  FC Viktoria Köln:
+    home: 
+    away: 157.192
+  1. FC Lok Leipzig:
+    home: 
+    away: 517.509
+  Stuttgarter Kickers:
+    home: 
+    away: 166.204
+  1. FC Magdeburg:
+    home: 
+    away: 290.063
+FC Augsburg:
+  TSG 1899 Hoffenheim:
+    home: 86.200, 36.002, 104.369
+    away: 25.241, 20.524, 56.115
+  Eintracht Frankfurt:
+    home: 34.545, 64.210, 142.560
+    away: 94.286, 67.967
+  Bayer 04 Leverkusen:
+    home: 162.157, 55.374, 356.984
+    away: 54.088, 149.263
+  1. FC Union Berlin:
+    home: 31.068, 43.554
+    away: 72.017, 49.198, 173.842
+  Borussia Mönchengladbach:
+    home: 57.435, 67.029, 464.024
+    away: 121.942, 81.851, 128.305
+  SC Freiburg:
+    home: 80.256, 186.197, 90.899
+    away: 149.513, 51.559, 92.807
+  Borussia Dortmund:
+    home: 190.659, 813.168, 318.142
+    away: 370.480, 244.379
+  Arminia Bielefeld:
+    home: 46.156
+    away: 22.685
+  1. FSV Mainz 05:
+    home: 105.869, 29.413, 70.560
+    away: 52.379, 22.644, 71.906
+  VfB Stuttgart:
+    home: 37.003, 69.819
+    away: 100.797, 55.185, 386.786
+  VfL Wolfsburg:
+    home: 34.933, 23.431, 99.240
+    away: 58.513, 45.252, 90.443
+  FC Bayern München:
+    home: 146.690, 229.203, 674.714, 878.181
+    away: 203.205, 981.025, 1.299.093
+  Hertha BSC:
+    home: 35.131, 60.144
+    away: 54.195, 46.698
+  VfL Bochum 1848:
+    home: 27.352, 21.352, 55.593
+    away: 16.951, 83.556, 74.979
+  1. FC Köln:
+    home: 37.092, 56.365, 116.308
+    away: 88.109, 80.336, 66.453
+  RB Leipzig:
+    home: 41.266, 122.162, 103.209
+    away: 82.652, 138.368, 124.574
+  SpVgg Greuther Fürth:
+    home: 14.494
+    away: 17.846
+  SV Werder Bremen:
+    home: 43.818
+    away: 56.202, 98.211
+  FC Schalke 04:
+    home: 68.435
+    away: 217.586
+  SV Darmstadt 98:
+    home: 83.782
+    away: 168.972
+  1. FC Heidenheim 1846:
+    home: 38.743
+    away: 183.375
+  SpVgg Unterhaching:
+    home: 
+    away: 252.547
+  BW Lohne:
+    home: 
+    away: 55.240
+FC Schalke 04:
+  1. FC Köln:
+    home: 71.990
+    away: 280.275
+  Borussia Mönchengladbach:
+    home: 810.973
+    away: 126.215
+  VfL Wolfsburg:
+    home: 92.352
+    away: 70.282
+  1. FC Union Berlin:
+    home: 142.868
+    away: 170.172
+  VfB Stuttgart:
+    home: 252.400
+    away: 69.391
+  VfL Bochum 1848:
+    home: 94.486
+    away: 147.673
+  Borussia Dortmund:
+    home: 733.175
+    away: 157.614
+  FC Augsburg:
+    home: 217.586
+    away: 68.435
+  Bayer 04 Leverkusen:
+    home: 107.973
+    away: 53.486
+  TSG 1899 Hoffenheim:
+    home: 29.258
+    away: 170.756, 140.032
+  Hertha BSC:
+    home: 498.983, 273.537
+    away: 147.194, 291.852
+  SC Freiburg:
+    home: 118.564
+    away: 227.713
+  SV Werder Bremen:
+    home: 702.236, 204.451
+    away: 170.444, 81.267
+  1. FSV Mainz 05:
+    home: 120.393
+    away: 448.160
+  FC Bayern München:
+    home: 617.961
+    away: 969.646
+  Eintracht Frankfurt:
+    home: 245.244
+    away: 156.109
+  RB Leipzig:
+    home: 97.345
+    away: 459.596
+  FC St. Pauli:
+    home: 428.146, 228.240
+    away: 266.329, 34.787, 210.483
+  Eintracht Braunschweig:
+    home: 78.493
+    away: 173.674, 121.620
+  Bremer SV:
+    home: 
+    away: 142.651
+  1. FC Nürnberg:
+    home: 26.487
+    away: 216.014, 119.916
+  SV Sandhausen:
+    home: 154.374
+    away: 242.488
+  SV Darmstadt 98:
+    home: 80.431
+    away: 153.158
+  1. FC Heidenheim 1846:
+    home: 143.117
+    away: 28.690
+  Hannover 96:
+    home: 46.913, 185.873
+    away: 
+  FC Ingolstadt 04:
+    home: 363.019
+    away: 27.467
+  Hansa Rostock:
+    home: 132.321
+    away: 134.058, 391.923
+  SC Paderborn 07:
+    home: 39.724, 153.265
+    away: 93.554, 54.886
+  Fortuna Düsseldorf:
+    home: 405.782
+    away: 47.177, 241.183
+  FC Erzgebirge Aue:
+    home: 
+    away: 142.590
+  Holstein Kiel:
+    home: 63.572, 226.512
+    away: 416.215, 61.438
+  Hamburger SV:
+    home: 735.208, 155.505
+    away: 68.103, 577.240
+  Dynamo Dresden:
+    home: 125.895
+    away: 
+  Karlsruher SC:
+    home: 320.400, 93.299
+    away: 252.758
+  1. FC Magdeburg:
+    home: 196.719
+    away: 234.940
+  1. FC Kaiserslautern:
+    home: 354.862
+    away: 101.556
+  SpVgg Greuther Fürth:
+    home: 72.337
+    away: 
+  VfL Osnabrück:
+    home: 70.159
+    away: 
+  SV Wehen Wiesbaden:
+    home: 
+    away: 138.243
+SpVgg Greuther Fürth:
+  VfB Stuttgart:
+    home: 23.422
+    away: 262.106
+  Arminia Bielefeld:
+    home: 60.135
+    away: 37.848
+  1. FSV Mainz 05:
+    home: 19.240
+    away: 64.816
+  VfL Wolfsburg:
+    home: 76.007
+    away: 39.772
+  Hertha BSC:
+    home: 40.085
+    away: 95.473
+  FC Bayern München:
+    home: 699.084
+    away: 517.660
+  1. FC Köln:
+    home: 21.658
+    away: 108.707
+  VfL Bochum 1848:
+    home: 25.855
+    away: 20.587
+  RB Leipzig:
+    home: 85.807
+    away: 136.915
+  SC Freiburg:
+    home: 14.239
+    away: 85.052
+  Eintracht Frankfurt:
+    home: 140.966
+    away: 25.014
+  Borussia Mönchengladbach:
+    home: 35.719
+    away: 56.081
+  TSG 1899 Hoffenheim:
+    home: 204.094
+    away: 22.618
+  Bayer 04 Leverkusen:
+    home: 33.380
+    away: 138.153
+  1. FC Union Berlin:
+    home: 57.697
+    away: 19.931
+  Borussia Dortmund:
+    home: 128.541
+    away: 229.813
+  FC Augsburg:
+    home: 17.846
+    away: 14.494
+  FC 08 Homburg:
+    home: 
+    away: 126.259
+  Stuttgarter Kickers:
+    home: 
+    away: 65.611
+  Karlsruher SC:
+    home: 
+    away: 35.860
+  FC Schalke 04:
+    home: 
+    away: 72.337
+Hertha BSC:
+  1. FC Köln:
+    home: 156.652, 50.909
+    away: 191.901, 222.360
+  VfL Wolfsburg:
+    home: 128.694, 57.346
+    away: 24.932, 99.744
+  FC Bayern München:
+    home: 293.056, 484.800
+    away: 1.462.604, 1.018.101
+  VfL Bochum 1848:
+    home: 15.822, 74.495
+    away: 127.633, 33.448
+  SpVgg Greuther Fürth:
+    home: 95.473
+    away: 40.085
+  RB Leipzig:
+    home: 189.229, 194.771
+    away: 283.277, 119.144
+  SC Freiburg:
+    home: 208.142, 39.603
+    away: 38.410, 52.928
+  Eintracht Frankfurt:
+    home: 87.205, 414.801
+    away: 49.293, 115.227
+  Borussia Mönchengladbach:
+    home: 125.592, 141.556
+    away: 66.158, 44.996
+  TSG 1899 Hoffenheim:
+    home: 65.175, 47.223
+    away: 40.224, 144.797
+  Bayer 04 Leverkusen:
+    home: 85.054, 43.720
+    away: 29.526, 121.575
+  1. FC Union Berlin:
+    home: 363.984, 146.502
+    away: 131.272, 136.693
+  FC Augsburg:
+    home: 54.195, 46.698
+    away: 35.131, 60.144
+  VfB Stuttgart:
+    home: 76.388, 81.833
+    away: 46.482, 51.490
+  Arminia Bielefeld:
+    home: 39.506
+    away: 84.125
+  1. FSV Mainz 05:
+    home: 61.856, 28.001, 251.494
+    away: 46.812, 17.824
+  Borussia Dortmund:
+    home: 344.968, 291.631
+    away: 177.295, 810.355
+  FC Schalke 04:
+    home: 147.194, 291.852
+    away: 498.983, 273.537
+  SV Werder Bremen:
+    home: 130.171
+    away: 84.164
+  1. FC Kaiserslautern:
+    home: 538.635
+    away: 
+  Hamburger SV:
+    home: 721.520, 286.399, 84.045
+    away: 549.334, 294.937
+  Carl Zeiss Jena:
+    home: 
+    away: 174.488
+  Eintracht Braunschweig:
+    home: 
+    away: 594.800
+  FC St. Pauli:
+    home: 75.279
+    away: 100.120
+  Fortuna Düsseldorf:
+    home: 73.031
+    away: 82.104
+  Karlsruher SC:
+    home: 75.753
+    away: 
+TSG 1899 Hoffenheim:
+  FC Augsburg:
+    home: 25.241, 20.524, 56.115
+    away: 86.200, 36.002, 104.369
+  1. FC Union Berlin:
+    home: 138.636, 62.381, 111.435
+    away: 24.857, 48.308, 185.754
+  Borussia Dortmund:
+    home: 181.693, 324.567, 677.374
+    away: 685.726, 474.763, 743.290, 540.958
+  1. FSV Mainz 05:
+    home: 65.480, 26.855, 56.288
+    away: 18.194, 37.083
+  Arminia Bielefeld:
+    home: 18.151
+    away: 38.231
+  VfL Wolfsburg:
+    home: 95.201, 16.332, 142.902
+    away: 51.628, 29.203, 49.997
+  VfB Stuttgart:
+    home: 36.045, 61.619, 448.791
+    away: 138.450, 94.740, 116.427
+  1. FC Köln:
+    home: 77.424, 125.375, 91.431
+    away: 32.404, 58.604, 217.430
+  FC Bayern München:
+    home: 190.932, 307.808
+    away: 1.035.068, 562.628, 795.648
+  Hertha BSC:
+    home: 40.224, 144.797
+    away: 65.175, 47.223
+  VfL Bochum 1848:
+    home: 65.635, 134.856, 47.194
+    away: 574.986, 62.937
+  RB Leipzig:
+    home: 53.813, 32.827
+    away: 137.342, 69.363, 157.688, 227.301
+  SpVgg Greuther Fürth:
+    home: 22.618
+    away: 204.094
+  Eintracht Frankfurt:
+    home: 32.515, 127.934, 140.188
+    away: 26.624, 187.779, 331.516
+  SC Freiburg:
+    home: 96.399, 12.665, 198.282
+    away: 40.761, 106.693, 103.923
+  Bayer 04 Leverkusen:
+    home: 59.032, 55.417, 252.460
+    away: 73.662, 63.756, 877.479
+  Borussia Mönchengladbach:
+    home: 48.773, 86.471
+    away: 62.045, 204.545, 68.006
+  SV Werder Bremen:
+    home: 74.175, 91.909
+    away: 76.369, 164.826
+  FC Schalke 04:
+    home: 170.756, 140.032
+    away: 29.258
+  1. FC Heidenheim 1846:
+    home: 52.591
+    away: 156.915
+  SV Darmstadt 98:
+    home: 76.522
+    away: 
+  VfB Lübeck:
+    home: 
+    away: 126.174
+  SV Rödinghausen:
+    home: 
+    away: 84.546
+RB Leipzig:
+  1. FSV Mainz 05:
+    home: 112.611, 87.961, 145.713
+    away: 147.086, 16.898, 150.638
+  VfB Stuttgart:
+    home: 384.865, 84.270, 424.665
+    away: 52.670, 232.189, 606.768
+  VfL Wolfsburg:
+    home: 88.181, 55.435
+    away: 142.649, 71.327, 150.934, 528.077
+  FC Bayern München:
+    home: 2.504.065, 636.855, 1.416.115
+    away: 444.329, 1.149.522, 930.818
+  1. FC Köln:
+    home: 93.794, 377.748, 321.635
+    away: 825.007, 66.336, 206.592
+  Hertha BSC:
+    home: 283.277, 119.144
+    away: 189.229, 194.771
+  VfL Bochum 1848:
+    home: 226.279, 96.838, 322.828
+    away: 32.556, 120.944, 159.883
+  SC Freiburg:
+    home: 35.975, 52.107, 319.219
+    away: 187.699, 94.610, 381.352, 142.928
+  SpVgg Greuther Fürth:
+    home: 136.915
+    away: 85.807
+  Eintracht Frankfurt:
+    home: 43.821, 101.225, 141.438, 424.615
+    away: 221.354, 873.343
+  Borussia Dortmund:
+    home: 855.329, 358.468, 488.786
+    away: 223.633, 590.734, 629.922
+  TSG 1899 Hoffenheim:
+    home: 137.342, 69.363, 157.688, 227.301
+    away: 53.813, 32.827
+  Bayer 04 Leverkusen:
+    home: 139.253, 39.924, 811.005
+    away: 57.957, 481.638, 796.640
+  1. FC Union Berlin:
+    home: 101.774, 324.360, 185.481
+    away: 71.698, 375.821, 758.532
+  Borussia Mönchengladbach:
+    home: 153.137, 56.093, 274.546
+    away: 76.789, 418.654, 179.306
+  FC Augsburg:
+    home: 82.652, 138.368, 124.574
+    away: 41.266, 122.162, 103.209
+  Arminia Bielefeld:
+    home: 76.686
+    away: 87.396
+  SV Werder Bremen:
+    home: 242.256
+    away: 42.392, 123.519
+  FC Schalke 04:
+    home: 459.596
+    away: 97.345
+  SV Darmstadt 98:
+    home: 95.898
+    away: 140.797
+  1. FC Heidenheim 1846:
+    home: 102.275
+    away: 
+  SV Wehen Wiesbaden:
+    home: 
+    away: 432.204
+  Hamburger SV:
+    home: 146.430
+    away: 
+  FC Teutonia Ottensen:
+    home: 
+    away: 231.886
+SC Freiburg:
+  Arminia Bielefeld:
+    home: 29.497
+    away: 74.965
+  Borussia Dortmund:
+    home: 416.069, 731.228, 542.897
+    away: 349.269, 382.859, 469.906
+  VfB Stuttgart:
+    home: 41.870, 60.818, 353.885
+    away: 188.780, 62.553, 403.229
+  1. FC Köln:
+    home: 136.733, 34.631, 85.573
+    away: 35.443, 78.284
+  1. FSV Mainz 05:
+    home: 23.624, 39.229
+    away: 60.257, 84.587, 112.024
+  FC Augsburg:
+    home: 149.513, 51.559, 92.807
+    away: 80.256, 186.197, 90.899
+  Hertha BSC:
+    home: 38.410, 52.928
+    away: 208.142, 39.603
+  RB Leipzig:
+    home: 187.699, 94.610, 381.352, 142.928
+    away: 35.975, 52.107, 319.219
+  VfL Wolfsburg:
+    home: 110.055, 127.594
+    away: 86.381, 60.510, 56.895
+  SpVgg Greuther Fürth:
+    home: 85.052
+    away: 14.239
+  FC Bayern München:
+    home: 294.276, 750.455, 900.664
+    away: 605.568, 317.867, 1.219.850, 1.125.206
+  Eintracht Frankfurt:
+    home: 184.941, 175.550, 155.296
+    away: 52.200, 206.993, 126.377
+  VfL Bochum 1848:
+    home: 144.879, 76.321, 106.197
+    away: 161.061, 34.720, 97.575
+  Borussia Mönchengladbach:
+    home: 45.506, 24.334, 165.197
+    away: 349.809, 103.525, 197.141
+  TSG 1899 Hoffenheim:
+    home: 40.761, 106.693, 103.923
+    away: 96.399, 12.665, 198.282
+  1. FC Union Berlin:
+    home: 75.223, 99.889, 100.480
+    away: 39.471, 192.055
+  Bayer 04 Leverkusen:
+    home: 354.430, 111.265, 710.339
+    away: 26.088, 129.760, 644.443
+  SV Werder Bremen:
+    home: 28.282, 185.925
+    away: 100.544, 214.525
+  FC Schalke 04:
+    home: 227.713
+    away: 118.564
+  SV Darmstadt 98:
+    home: 62.538
+    away: 
+  1. FC Heidenheim 1846:
+    home: 
+    away: 223.677
+  SC Paderborn 07:
+    home: 215.192
+    away: 
+  SV Oberachern:
+    home: 
+    away: 96.312
+  SV Sandhausen:
+    home: 
+    away: 289.511
+  FC St. Pauli:
+    home: 187.982
+    away: 
+  1. FC Kaiserslautern:
+    home: 
+    away: 236.392
+SV Darmstadt 98:
+  Eintracht Frankfurt:
+    home: 132.963
+    away: 300.555, 311.954
+  1. FC Union Berlin:
+    home: 504.539
+    away: 88.172
+  Bayer 04 Leverkusen:
+    home: 227.445
+    away: 498.400
+  Borussia Mönchengladbach:
+    home: 320.670, 110.917
+    away: 42.119
+  VfB Stuttgart:
+    home: 313.449
+    away: 412.500
+  SV Werder Bremen:
+    home: 216.769, 59.115
+    away: 72.551, 40.912
+  FC Augsburg:
+    home: 168.972
+    away: 83.782
+  RB Leipzig:
+    home: 140.797
+    away: 95.898
+  FC Bayern München:
+    home: 731.555
+    away: 2.555.042
+  VfL Bochum 1848:
+    home: 68.199
+    away: 83.219
+  1. FSV Mainz 05:
+    home: 52.779
+    away: 56.705
+  SC Freiburg:
+    home: 
+    away: 62.538
+  1. FC Köln:
+    home: 90.184
+    away: 
+  1. FC Heidenheim 1846:
+    home: 
+    away: 70.067
+  VfL Wolfsburg:
+    home: 30.699
+    away: 
+  TSG 1899 Hoffenheim:
+    home: 
+    away: 76.522
+  Borussia Dortmund:
+    home: 990.294
+    away: 
+  FC 08 Homburg:
+    home: 
+    away: 481.261
+  1. FC Magdeburg:
+    home: 75.789
+    away: 
+  FC St. Pauli:
+    home: 
+    away: 13.253, 29.589
+  Fortuna Düsseldorf:
+    home: 5.991
+    away: 16.735
+  1. FC Kaiserslautern:
+    home: 
+    away: 80.445
+  Hansa Rostock:
+    home: 206.391
+    away: 
+  SC Paderborn 07:
+    home: 30.564
+    away: 
+  FC Erzgebirge Aue:
+    home: 41.171
+    away: 
+  FC Schalke 04:
+    home: 153.158
+    away: 80.431
+  1. FC Nürnberg:
+    home: 16.004
+    away: 42.557
+  Dynamo Dresden:
+    home: 
+    away: 24.930
+  Hamburger SV:
+    home: 132.033
+    away: 223.815
+  Karlsruher SC:
+    home: 6.375
+    away: 
+SV Werder Bremen:
+  VfL Wolfsburg:
+    home: 187.096, 95.826
+    away: 71.150, 246.381
+  VfB Stuttgart:
+    home: 152.547
+    away: 140.425, 455.153
+  Borussia Dortmund:
+    home: 211.022, 393.779
+    away: 822.906, 395.483
+  Eintracht Frankfurt:
+    home: 561.545, 230.300
+    away: 155.927, 180.123
+  VfL Bochum 1848:
+    home: 85.727
+    away: 47.379, 109.232
+  FC Augsburg:
+    home: 56.202, 98.211
+    away: 43.818
+  Bayer 04 Leverkusen:
+    home: 147.700, 298.048
+    away: 46.420
+  Borussia Mönchengladbach:
+    home: 611.412
+    away: 184.511, 131.393
+  TSG 1899 Hoffenheim:
+    home: 76.369, 164.826
+    away: 74.175, 91.909
+  1. FSV Mainz 05:
+    home: 13.944, 377.984
+    away: 177.741, 103.695
+  SC Freiburg:
+    home: 100.544, 214.525
+    away: 28.282, 185.925
+  Hertha BSC:
+    home: 84.164
+    away: 130.171
+  FC Schalke 04:
+    home: 170.444, 81.267
+    away: 702.236, 204.451
+  FC Bayern München:
+    home: 818.831, 1.199.468
+    away: 283.581, 1.300.154
+  RB Leipzig:
+    home: 42.392, 123.519
+    away: 242.256
+  1. FC Köln:
+    home: 51.551, 186.525
+    away: 326.213, 132.508
+  1. FC Union Berlin:
+    home: 77.614, 211.901
+    away: 166.415, 115.737
+  1. FC Heidenheim 1846:
+    home: 126.218
+    away: 298.546, 22.784
+  SV Darmstadt 98:
+    home: 72.551, 40.912
+    away: 216.769, 59.115
+  FC Viktoria Köln:
+    home: 
+    away: 325.885
+  SC Paderborn 07:
+    home: 
+    away: 90.724
+  Energie Cottbus:
+    home: 
+    away: 175.027
+  Jahn Regensburg:
+    home: 175.383
+    away: 
+  FC Erzgebirge Aue:
+    home: 59.466
+    away: 100.624
+  Holstein Kiel:
+    home: 26.447
+    away: 72.179
+  1. FC Nürnberg:
+    home: 29.389
+    away: 
+  FC St. Pauli:
+    home: 46.379
+    away: 51.636
+  SV Sandhausen:
+    home: 15.877
+    away: 
+  Hamburger SV:
+    home: 548.351
+    away: 311.995
+  Hannover 96:
+    home: 
+    away: 66.373
+  Dynamo Dresden:
+    home: 
+    away: 127.335
+  Hansa Rostock:
+    home: 157.810
+    away: 
+VfB Stuttgart:
+  SpVgg Greuther Fürth:
+    home: 262.106
+    away: 23.422
+  RB Leipzig:
+    home: 52.670, 232.189, 606.768
+    away: 384.865, 84.270, 424.665
+  SC Freiburg:
+    home: 188.780, 62.553, 403.229
+    away: 41.870, 60.818, 353.885
+  Eintracht Frankfurt:
+    home: 39.833, 52.715, 501.540
+    away: 175.676, 40.918, 613.396
+  Bayer 04 Leverkusen:
+    home: 140.417, 153.546, 608.280
+    away: 92.215, 26.863, 1.066.536
+  VfL Bochum 1848:
+    home: 42.698, 40.927, 420.040
+    away: 24.512, 201.939, 152.152
+  TSG 1899 Hoffenheim:
+    home: 138.450, 94.740, 116.427
+    away: 36.045, 61.619, 448.791
+  Borussia Mönchengladbach:
+    home: 525.389, 167.723
+    away: 205.602, 92.609, 294.130
+  1. FC Union Berlin:
+    home: 77.509, 43.021, 446.864, 256.381
+    away: 44.995, 56.719, 411.984
+  FC Augsburg:
+    home: 100.797, 55.185, 386.786
+    away: 37.003, 69.819
+  Arminia Bielefeld:
+    home: 35.065, 179.750
+    away: 25.993
+  Borussia Dortmund:
+    home: 233.891, 1.229.018, 764.163, 984.293
+    away: 292.905, 183.052, 534.334
+  1. FSV Mainz 05:
+    home: 53.425, 35.973, 374.491
+    away: 32.586, 298.301, 372.691
+  Hertha BSC:
+    home: 46.482, 51.490
+    away: 76.388, 81.833
+  VfL Wolfsburg:
+    home: 37.895, 32.533, 440.389
+    away: 109.375, 38.348, 402.891
+  FC Bayern München:
+    home: 556.592, 991.874
+    away: 280.436, 270.623, 924.033
+  1. FC Köln:
+    home: 141.326, 92.183, 102.751
+    away: 51.354, 156.152, 143.111
+  SV Werder Bremen:
+    home: 140.425, 455.153
+    away: 152.547
+  FC Schalke 04:
+    home: 69.391
+    away: 252.400
+  SV Darmstadt 98:
+    home: 412.500
+    away: 313.449
+  1. FC Heidenheim 1846:
+    home: 510.103
+    away: 353.143
+  TSG Balingen:
+    home: 
+    away: 150.468
+  Hamburger SV:
+    home: 1.371.196
+    away: 1.118.288
+  1. FC Nürnberg:
+    home: 
+    away: 231.555
+  SC Paderborn 07:
+    home: 
+    away: 546.961
+  Dynamo Dresden:
+    home: 
+    away: 206.583
+VfL Bochum 1848:
+  VfL Wolfsburg:
+    home: 28.197, 58.185, 69.299
+    away: 245.159, 23.907
+  1. FSV Mainz 05:
+    home: 179.025, 113.396, 71.260
+    away: 21.275, 38.240, 61.966
+  1. FC Köln:
+    home: 60.943, 28.227, 126.268
+    away: 156.225, 40.759, 175.383
+  Hertha BSC:
+    home: 127.633, 33.448
+    away: 15.822, 74.495
+  FC Bayern München:
+    home: 444.924, 1.307.987, 1.830.830
+    away: 1.414.928, 614.189, 1.220.449
+  VfB Stuttgart:
+    home: 24.512, 201.939, 152.152
+    away: 42.698, 40.927, 420.040
+  RB Leipzig:
+    home: 32.556, 120.944, 159.883
+    away: 226.279, 96.838, 322.828
+  SpVgg Greuther Fürth:
+    home: 20.587
+    away: 25.855
+  Eintracht Frankfurt:
+    home: 130.775, 32.062, 81.151
+    away: 94.360, 97.608, 80.970
+  Borussia Mönchengladbach:
+    home: 105.720, 31.220, 142.130
+    away: 97.207, 67.417, 126.143
+  TSG 1899 Hoffenheim:
+    home: 574.986, 62.937
+    away: 65.635, 134.856, 47.194
+  Bayer 04 Leverkusen:
+    home: 50.995, 248.460
+    away: 21.519, 71.256, 653.305
+  SC Freiburg:
+    home: 161.061, 34.720, 97.575
+    away: 144.879, 76.321, 106.197
+  FC Augsburg:
+    home: 16.951, 83.556, 74.979
+    away: 27.352, 21.352, 55.593
+  Borussia Dortmund:
+    home: 312.736, 639.146, 330.295, 716.872
+    away: 499.633, 372.090, 715.643
+  Arminia Bielefeld:
+    home: 47.825
+    away: 61.417, 197.088
+  1. FC Union Berlin:
+    home: 45.086, 87.561, 109.245
+    away: 35.735, 83.713
+  SV Werder Bremen:
+    home: 47.379, 109.232
+    away: 85.727
+  FC Schalke 04:
+    home: 147.673
+    away: 94.486
+  SV Darmstadt 98:
+    home: 83.219
+    away: 68.199
+  1. FC Heidenheim 1846:
+    home: 
+    away: 28.545
+  SV Elversberg:
+    home: 
+    away: 25.513
+  FC Viktoria 1889 Berlin:
+    home: 
+    away: 21.163
+VfL Wolfsburg:
+  VfL Bochum 1848:
+    home: 245.159, 23.907
+    away: 28.197, 58.185, 69.299
+  Hertha BSC:
+    home: 24.932, 99.744
+    away: 128.694, 57.346
+  RB Leipzig:
+    home: 142.649, 71.327, 150.934, 528.077
+    away: 88.181, 55.435
+  SpVgg Greuther Fürth:
+    home: 39.772
+    away: 76.007
+  Eintracht Frankfurt:
+    home: 148.822, 246.045, 166.347
+    away: 44.292, 20.954, 133.777
+  TSG 1899 Hoffenheim:
+    home: 51.628, 29.203, 49.997
+    away: 95.201, 16.332, 142.902
+  Borussia Mönchengladbach:
+    home: 160.859, 28.079, 150.783
+    away: 68.344, 77.842, 148.307, 296.514
+  1. FC Union Berlin:
+    home: 22.366, 50.344, 123.048
+    away: 66.741, 48.865, 144.905, 388.885
+  SC Freiburg:
+    home: 86.381, 60.510, 56.895
+    away: 110.055, 127.594
+  Bayer 04 Leverkusen:
+    home: 36.349, 55.993, 279.192
+    away: 127.507, 34.606, 936.491
+  FC Augsburg:
+    home: 58.513, 45.252, 90.443
+    away: 34.933, 23.431, 99.240
+  Arminia Bielefeld:
+    home: 31.596
+    away: 98.485
+  Borussia Dortmund:
+    home: 570.523, 117.048, 216.819
+    away: 138.513, 1.301.142, 276.791
+  1. FSV Mainz 05:
+    home: 60.697, 71.591
+    away: 33.176, 20.370, 68.256
+  VfB Stuttgart:
+    home: 109.375, 38.348, 402.891
+    away: 37.895, 32.533, 440.389
+  1. FC Köln:
+    home: 84.464, 69.908, 102.383
+    away: 31.143, 24.008, 91.877
+  FC Bayern München:
+    home: 266.487, 1.679.560, 959.431
+    away: 429.709, 1.633.600
+  SV Werder Bremen:
+    home: 71.150, 246.381
+    away: 187.096, 95.826
+  FC Schalke 04:
+    home: 70.282
+    away: 92.352
+  1. FC Heidenheim 1846:
+    home: 127.348
+    away: 44.173
+  SV Darmstadt 98:
+    home: 
+    away: 30.699
+  TuS Makkabi Berlin:
+    home: 
+    away: 106.788
+  Eintracht Braunschweig:
+    home: 
+    away: 44.528
+  Carl Zeiss Jena:
+    home: 
+    away: 43.181
+1. FC Kaan-Marienborn:
+  1. FC Nürnberg:
+    home: 60.665
+    away: 
+1. FC Kaiserslautern:
+  1. FC Saarbrücken:
+    home: 
+    away: 707.632
+  Hertha BSC:
+    home: 
+    away: 538.635
+  1. FC Nürnberg:
+    home: 179.146, 219.409
+    away: 
+  1. FC Köln:
+    home: 339.884
+    away: 
+  FC Rot-Weiß Koblenz:
+    home: 
+    away: 82.414
+  SC Freiburg:
+    home: 236.392
+    away: 
+  1. FC Heidenheim 1846:
+    home: 300.402
+    away: 
+  Fortuna Düsseldorf:
+    home: 
+    away: 56.969, 247.962
+  Arminia Bielefeld:
+    home: 
+    away: 49.927
+  Hamburger SV:
+    home: 274.261
+    away: 46.648
+  SV Darmstadt 98:
+    home: 80.445
+    away: 
+  SV Sandhausen:
+    home: 
+    away: 18.114
+  1. FC Magdeburg:
+    home: 167.104
+    away: 56.060
+  FC St. Pauli:
+    home: 44.177
+    away: 33.000
+  Dynamo Dresden:
+    home: 72.138
+    away: 488.236
+  Hannover 96:
+    home: 
+    away: 61.880
+  SC Paderborn 07:
+    home: 28.356
+    away: 
+  FC Schalke 04:
+    home: 101.556
+    away: 354.862
+1. FC Lok Leipzig:
+  Eintracht Frankfurt:
+    home: 517.509
+    away: 
+1. FC Magdeburg:
+  Fortuna Düsseldorf:
+    home: 236.075, 89.943
+    away: 
+  Holstein Kiel:
+    home: 
+    away: 180.785
+  Eintracht Frankfurt:
+    home: 290.063
+    away: 
+  SV Darmstadt 98:
+    home: 
+    away: 75.789
+  1. FC Kaiserslautern:
+    home: 56.060
+    away: 167.104
+  FC Schalke 04:
+    home: 234.940
+    away: 196.719
+1. FC Nürnberg:
+  1. FC Kaiserslautern:
+    home: 
+    away: 179.146, 219.409
+  Hansa Rostock:
+    home: 159.379
+    away: 
+  VfB Stuttgart:
+    home: 231.555
+    away: 
+  Fortuna Düsseldorf:
+    home: 200.718
+    away: 
+  SV Waldhof Mannheim:
+    home: 
+    away: 65.062
+  1. FC Kaan-Marienborn:
+    home: 
+    away: 60.665
+  Hamburger SV:
+    home: 75.749, 66.122, 29.081
+    away: 
+  FC Schalke 04:
+    home: 216.014, 119.916
+    away: 26.487
+  FC St. Pauli:
+    home: 
+    away: 13.933
+  SV Werder Bremen:
+    home: 
+    away: 29.389
+  SV Darmstadt 98:
+    home: 42.557
+    away: 16.004
+  Jahn Regensburg:
+    home: 30.389
+    away: 
+  Hannover 96:
+    home: 29.475
+    away: 
+1. FC Saarbrücken:
+  1. FC Kaiserslautern:
+    home: 707.632
+    away: 
+  Borussia Mönchengladbach:
+    home: 1.209.641
+    away: 
+  Eintracht Frankfurt:
+    home: 952.512
+    away: 
+  FC Bayern München:
+    home: 2.654.296
+    away: 
+  Karlsruher SC:
+    home: 110.650
+    away: 
+BSV SW Rehden:
+  SV Sandhausen:
+    home: 11.350
+    away: 
+BW Lohne:
+  FC Augsburg:
+    home: 55.240
+    away: 
+Bremer SV:
+  FC Schalke 04:
+    home: 142.651
+    away: 
+Carl Zeiss Jena:
+  Hertha BSC:
+    home: 174.488
+    away: 
+  VfL Wolfsburg:
+    home: 43.181
+    away: 
+Chemnitzer FC:
+  1. FC Union Berlin:
+    home: 82.504
+    away: 
+Dynamo Dresden:
+  VfB Stuttgart:
+    home: 206.583
+    away: 
+  1. FC Kaiserslautern:
+    home: 488.236
+    away: 72.138
+  SV Darmstadt 98:
+    home: 24.930
+    away: 
+  FC Schalke 04:
+    home: 
+    away: 125.895
+  SV Werder Bremen:
+    home: 127.335
+    away: 
+  Hansa Rostock:
+    home: 
+    away: 29.114
+  Hannover 96:
+    home: 30.937
+    away: 
+Eintracht Braunschweig:
+  FC Schalke 04:
+    home: 173.674, 121.620
+    away: 78.493
+  VfL Wolfsburg:
+    home: 44.528
+    away: 
+  Hertha BSC:
+    home: 594.800
+    away: 
+  Hansa Rostock:
+    home: 39.779
+    away: 
+  Fortuna Düsseldorf:
+    home: 45.642
+    away: 
+  Hamburger SV:
+    home: 
+    away: 52.085
+Energie Cottbus:
+  SV Werder Bremen:
+    home: 175.027
+    away: 
+FC 08 Homburg:
+  FC St. Pauli:
+    home: 237.634
+    away: 
+  SpVgg Greuther Fürth:
+    home: 126.259
+    away: 
+  SV Darmstadt 98:
+    home: 481.261
+    away: 
+FC Erzgebirge Aue:
+  1. FSV Mainz 05:
+    home: 44.344
+    away: 
+  SV Werder Bremen:
+    home: 100.624
+    away: 59.466
+  SV Darmstadt 98:
+    home: 
+    away: 41.171
+  FC Schalke 04:
+    home: 142.590
+    away: 
+FC Ingolstadt 04:
+  Hamburger SV:
+    home: 56.163
+    away: 
+  FC Schalke 04:
+    home: 27.467
+    away: 363.019
+FC Rot-Weiß Koblenz:
+  1. FC Kaiserslautern:
+    home: 82.414
+    away: 
+FC St. Pauli:
+  Fortuna Düsseldorf:
+    home: 539.887
+    away: 12.659, 49.032
+  FC 08 Homburg:
+    home: 
+    away: 237.634
+  FC Schalke 04:
+    home: 266.329, 34.787, 210.483
+    away: 428.146, 228.240
+  SC Freiburg:
+    home: 
+    away: 187.982
+  Hamburger SV:
+    home: 64.464, 341.933, 310.127
+    away: 404.812, 157.385
+  SV Darmstadt 98:
+    home: 13.253, 29.589
+    away: 
+  Arminia Bielefeld:
+    home: 
+    away: 12.721
+  1. FC Heidenheim 1846:
+    home: 23.960
+    away: 
+  Hansa Rostock:
+    home: 
+    away: 43.239, 66.863
+  1. FC Kaiserslautern:
+    home: 33.000
+    away: 44.177
+  Hannover 96:
+    home: 
+    away: 147.131
+  1. FC Nürnberg:
+    home: 13.933
+    away: 
+  SV Werder Bremen:
+    home: 51.636
+    away: 46.379
+  Jahn Regensburg:
+    home: 
+    away: 10.543
+  SC Paderborn 07:
+    home: 32.704
+    away: 
+  Hertha BSC:
+    home: 100.120
+    away: 75.279
+  Holstein Kiel:
+    home: 
+    away: 140.545
+FC Teutonia Ottensen:
+  Bayer 04 Leverkusen:
+    home: 194.026
+    away: 
+  RB Leipzig:
+    home: 231.886
+    away: 
+FC Viktoria 1889 Berlin:
+  VfL Bochum 1848:
+    home: 21.163
+    away: 
+FC Viktoria Köln:
+  Eintracht Frankfurt:
+    home: 157.192
+    away: 
+  SV Werder Bremen:
+    home: 325.885
+    away: 
+  FC Bayern München:
+    home: 1.167.049
+    away: 
+FC-Astoria Walldorf:
+  1. FC Union Berlin:
+    home: 118.834
+    away: 
+Fortuna Düsseldorf:
+  Bayer 04 Leverkusen:
+    home: 
+    away: 808.762
+  FC St. Pauli:
+    home: 12.659, 49.032
+    away: 539.887
+  1. FC Magdeburg:
+    home: 
+    away: 236.075, 89.943
+  SpVgg Unterhaching:
+    home: 
+    away: 188.992
+  1. FC Nürnberg:
+    home: 
+    away: 200.718
+  Jahn Regensburg:
+    home: 
+    away: 23.625
+  Kickers Offenbach:
+    home: 
+    away: 36.007
+  1. FC Kaiserslautern:
+    home: 56.969, 247.962
+    away: 
+  SV Darmstadt 98:
+    home: 16.735
+    away: 5.991
+  Hamburger SV:
+    home: 
+    away: 71.782, 101.188, 89.432
+  Hansa Rostock:
+    home: 21.491
+    away: 
+  Eintracht Braunschweig:
+    home: 
+    away: 45.642
+  FC Schalke 04:
+    home: 47.177, 241.183
+    away: 405.782
+  Hertha BSC:
+    home: 82.104
+    away: 73.031
+Hamburger SV:
+  Hertha BSC:
+    home: 549.334, 294.937
+    away: 721.520, 286.399, 84.045
+  Arminia Bielefeld:
+    home: 
+    away: 358.725, 99.222
+  Rot-Weiss Essen:
+    home: 
+    away: 330.085
+  VfB Stuttgart:
+    home: 1.118.288
+    away: 1.371.196
+  RB Leipzig:
+    home: 
+    away: 146.430
+  SpVgg Bayreuth:
+    home: 
+    away: 250.211
+  SV Sandhausen:
+    home: 184.329
+    away: 481.827
+  FC St. Pauli:
+    home: 404.812, 157.385
+    away: 64.464, 341.933, 310.127
+  1. FC Kaiserslautern:
+    home: 46.648
+    away: 274.261
+  Fortuna Düsseldorf:
+    home: 71.782, 101.188, 89.432
+    away: 
+  Karlsruher SC:
+    home: 106.558, 74.508
+    away: 52.217
+  1. FC Nürnberg:
+    home: 
+    away: 75.749, 66.122, 29.081
+  1. FC Heidenheim 1846:
+    home: 
+    away: 223.911
+  Hansa Rostock:
+    home: 
+    away: 229.280, 132.062
+  Hannover 96:
+    home: 56.200
+    away: 161.312
+  FC Ingolstadt 04:
+    home: 
+    away: 56.163
+  Jahn Regensburg:
+    home: 115.955
+    away: 131.707
+  SV Werder Bremen:
+    home: 311.995
+    away: 548.351
+  SV Darmstadt 98:
+    home: 223.815
+    away: 132.033
+  FC Schalke 04:
+    home: 68.103, 577.240
+    away: 735.208, 155.505
+  Holstein Kiel:
+    home: 57.118
+    away: 
+  SC Paderborn 07:
+    home: 
+    away: 97.905
+  Eintracht Braunschweig:
+    home: 52.085
+    away: 
+  VfL Osnabrück:
+    home: 
+    away: 108.488
+Hannover 96:
+  SV Sandhausen:
+    home: 
+    away: 87.728
+  Borussia Dortmund:
+    home: 600.702
+    away: 
+  Arminia Bielefeld:
+    home: 31.342
+    away: 
+  FC St. Pauli:
+    home: 147.131
+    away: 
+  Hamburger SV:
+    home: 161.312
+    away: 56.200
+  FC Schalke 04:
+    home: 
+    away: 46.913, 185.873
+  SV Werder Bremen:
+    home: 66.373
+    away: 
+  1. FC Nürnberg:
+    home: 
+    away: 29.475
+  Dynamo Dresden:
+    home: 
+    away: 30.937
+  1. FC Kaiserslautern:
+    home: 61.880
+    away: 
+  Holstein Kiel:
+    home: 
+    away: 40.638
+Hansa Rostock:
+  1. FC Nürnberg:
+    home: 
+    away: 159.379
+  Eintracht Braunschweig:
+    home: 
+    away: 39.779
+  Fortuna Düsseldorf:
+    home: 
+    away: 21.491
+  FC St. Pauli:
+    home: 43.239, 66.863
+    away: 
+  SV Darmstadt 98:
+    home: 
+    away: 206.391
+  Arminia Bielefeld:
+    home: 86.927
+    away: 
+  Hamburger SV:
+    home: 229.280, 132.062
+    away: 
+  FC Schalke 04:
+    home: 134.058, 391.923
+    away: 132.321
+  SV Werder Bremen:
+    home: 
+    away: 157.810
+  Dynamo Dresden:
+    home: 29.114
+    away: 
+Holstein Kiel:
+  1. FC Magdeburg:
+    home: 180.785
+    away: 
+  SV Werder Bremen:
+    home: 72.179
+    away: 26.447
+  FC Schalke 04:
+    home: 416.215, 61.438
+    away: 63.572, 226.512
+  Hamburger SV:
+    home: 
+    away: 57.118
+  FC St. Pauli:
+    home: 140.545
+    away: 
+  Hannover 96:
+    home: 40.638
+    away: 
+Jahn Regensburg:
+  Fortuna Düsseldorf:
+    home: 23.625
+    away: 
+  1. FC Köln:
+    home: 159.613
+    away: 
+  1. FC Heidenheim 1846:
+    home: 969.485
+    away: 
+  SV Werder Bremen:
+    home: 
+    away: 175.383
+  Hamburger SV:
+    home: 131.707
+    away: 115.955
+  1. FC Nürnberg:
+    home: 
+    away: 30.389
+  FC St. Pauli:
+    home: 10.543
+    away: 
+Karlsruher SC:
+  1. FC Saarbrücken:
+    home: 
+    away: 110.650
+  SV Sandhausen:
+    home: 
+    away: 42.312
+  TSG Neustrelitz:
+    home: 
+    away: 70.104
+  Hamburger SV:
+    home: 52.217
+    away: 106.558, 74.508
+  SV Darmstadt 98:
+    home: 
+    away: 6.375
+  FC Schalke 04:
+    home: 252.758
+    away: 320.400, 93.299
+  SpVgg Greuther Fürth:
+    home: 35.860
+    away: 
+  Hertha BSC:
+    home: 
+    away: 75.753
+Kickers Offenbach:
+  Fortuna Düsseldorf:
+    home: 36.007
+    away: 
+Preußen Münster:
+  FC Bayern München:
+    home: 834.950
+    away: 
+Rostocker FC:
+  1. FC Heidenheim 1846:
+    home: 82.810
+    away: 
+Rot-Weiss Essen:
+  Hamburger SV:
+    home: 330.085
+    away: 
+SC Paderborn 07:
+  Bayer 04 Leverkusen:
+    home: 
+    away: 420.592
+  SC Freiburg:
+    home: 
+    away: 215.192
+  VfB Stuttgart:
+    home: 546.961
+    away: 
+  SV Werder Bremen:
+    home: 90.724
+    away: 
+  SV Darmstadt 98:
+    home: 
+    away: 30.564
+  FC Schalke 04:
+    home: 93.554, 54.886
+    away: 39.724, 153.265
+  FC St. Pauli:
+    home: 
+    away: 32.704
+  Hamburger SV:
+    home: 97.905
+    away: 
+  1. FC Kaiserslautern:
+    home: 
+    away: 28.356
+SGS Essen:
+SV Elversberg:
+  1. FSV Mainz 05:
+    home: 89.381
+    away: 
+  VfL Bochum 1848:
+    home: 25.513
+    away: 
+  Bayer 04 Leverkusen:
+    home: 669.782
+    away: 
+SV Oberachern:
+  SC Freiburg:
+    home: 96.312
+    away: 
+  Borussia Mönchengladbach:
+    home: 138.708
+    away: 
+SV Rödinghausen:
+  TSG 1899 Hoffenheim:
+    home: 84.546
+    away: 
+SV Sandhausen:
+  Bayer 04 Leverkusen:
+    home: 384.668
+    away: 
+  Hannover 96:
+    home: 87.728
+    away: 
+  SC Freiburg:
+    home: 289.511
+    away: 
+  Karlsruher SC:
+    home: 42.312
+    away: 
+  BSV SW Rehden:
+    home: 
+    away: 11.350
+  Hamburger SV:
+    home: 481.827
+    away: 184.329
+  1. FC Kaiserslautern:
+    home: 18.114
+    away: 
+  FC Schalke 04:
+    home: 242.488
+    away: 154.374
+  SV Werder Bremen:
+    home: 
+    away: 15.877
+SV Waldhof Mannheim:
+  1. FC Nürnberg:
+    home: 65.062
+    away: 
+SV Wehen Wiesbaden:
+  RB Leipzig:
+    home: 432.204
+    away: 
+  Arminia Bielefeld:
+    home: 1.222.889
+    away: 516.039
+  FC Schalke 04:
+    home: 138.243
+    away: 
+SpVgg Bayreuth:
+  Hamburger SV:
+    home: 250.211
+    away: 
+SpVgg Unterhaching:
+  Fortuna Düsseldorf:
+    home: 188.992
+    away: 
+  FC Augsburg:
+    home: 252.547
+    away: 
+Stuttgarter Kickers:
+  Eintracht Frankfurt:
+    home: 166.204
+    away: 
+  SpVgg Greuther Fürth:
+    home: 65.611
+    away: 
+TSG Balingen:
+  VfB Stuttgart:
+    home: 150.468
+    away: 
+TSG Neustrelitz:
+  Karlsruher SC:
+    home: 70.104
+    away: 
+TSV 1860 München:
+  Borussia Dortmund:
+    home: 651.439
+    away: 
+TSV Schott Mainz:
+  Borussia Dortmund:
+    home: 476.124
+    away: 
+TuS Bersenbrück:
+  Borussia Mönchengladbach:
+    home: 127.788
+    away: 
+TuS Makkabi Berlin:
+  VfL Wolfsburg:
+    home: 106.788
+    away: 
+VfB Lübeck:
+  TSG 1899 Hoffenheim:
+    home: 126.174
+    away: 
+  1. FSV Mainz 05:
+    home: 43.476
+    away: 
+VfL Osnabrück:
+  1. FC Köln:
+    home: 217.837
+    away: 
+  FC Schalke 04:
+    home: 
+    away: 70.159
+  Hamburger SV:
+    home: 108.488
+    away: 
