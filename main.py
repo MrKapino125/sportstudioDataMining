@@ -17,6 +17,7 @@ def collect_data():
     urls = create_urls()
 
     for idx, url in enumerate(urls):
+
         line = url.split(",")
         u = line[0]
         avoid = []
