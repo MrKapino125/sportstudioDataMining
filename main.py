@@ -1,21 +1,213 @@
 import requests
 import helper
+import pdo
+import json
 
 
-def create_urls():
+class Game:
+    def __init__(self, title, str_views, str_time, url, league, season):
+        self.title = title
+        self.home_team = None
+        self.away_team = None
+
+        self.int_views = str_views
+        self.int_seconds = str_time
+        self.convert_input()
+        self.url = url
+
+        self.league = league
+        self.season = season
+
+    def to_dict(self):
+        return {
+            "title" : self.title,
+            "home_team": self.home_team,
+            "away_team": self.away_team,
+            "int_views": self.int_views,
+            "int_seconds": self.int_seconds,
+            "videoId": self.url,
+            "competition": self.league,
+            "season": self.season
+        }
+
+    def convert_input(self):
+        if type(self.int_views) != int:
+            self.int_views = helper.str_to_int(self.int_views)
+        if type(self.int_seconds) != int:
+            self.int_seconds = helper.time_to_int(self.int_seconds)
+        parse_data_class(self, get_synonyms())
+
+
+def create_urls(idx=None):
     urls = []
-    with open("playlist_urls.txt", "r") as f:
-        file = f.readlines()
-        for line in file:
-            urls.append(line.strip())
+    match idx:
+        case 0:
+            with open("playlists/Season2122.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 1:
+            with open("playlists/Season2223.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 2:
+            with open("playlists/Season2324.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 3:
+            with open("playlists/2Bundesliga.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 4:
+            with open("playlists/DFBPokal.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 5:
+            with open("playlists/Relegation.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case _:
+            with open("playlist_urls.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
     return urls
 
+def collect_data_game(videoId, league, season):
+    q = "https://www.youtube.com/watch?v=" + videoId
+    response = requests.get(q)
+    snippet = response.text
+
+    #snippet = snippet[snippet.find("""<meta name="title" content="""):] there are videoTags somewhere
+    snippet = snippet[snippet.find("""{"playerMicroformatRenderer":{"thumbnail":{"thumbnails":"""):]
+    snippet = snippet[snippet.find("""title":{"simpleText""") + len("""title":{"simpleText""") + 3:]
+    title_end_idx = snippet.find("}") - 1
+    title = snippet[:title_end_idx]
+    title = title.replace("\u202f", " ")
+    title = title.replace("\u2013", "-")
+
+    snippet = snippet[snippet.find(""","lengthSeconds":""") + len(""","lengthSeconds":""") + 1:]
+    time_end_idx = snippet.find(",") - 1
+    str_time = int(snippet[:time_end_idx])
+
+    snippet = snippet[snippet.find(""","viewCount":""") + len(""","viewCount":""") + 1:]
+    clicks_end_idx = snippet.find(",") - 1
+    clicks = int(snippet[:clicks_end_idx])
+
+
+    return Game(title, clicks, str_time, videoId, league, season)
+
+def collect_data_class():
+    games = []
+    for playlist_number in range(6):
+        print(f"Playlist Group {playlist_number+1}/6")
+
+        urls = create_urls(playlist_number)
+        for idx, url in enumerate(urls):
+            print(f"Playlist {idx+1}/{len(urls)}")
+
+            line = url.split(",")
+            u = line[0]
+            avoid = []
+            length = 9
+            if len(line) == 2:
+                avoid = [int(line[1])]
+            elif len(line) > 2:
+                length = int(line[-1])
+                if line[1] != "":
+                    for a in line[1:-1]:
+                        avoid.append(int(a))
+
+            q = "https://www.youtube.com/playlist?list=" + u
+            response = requests.get(q)
+            snippet = response.text
+            snippet = snippet[snippet.find("""{"label":"""):]
+
+            playlist_idx = 1
+            lookup_idx = 1
+            while playlist_idx < length + 1:
+                if lookup_idx in avoid:
+                    snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
+                    snippet = snippet[snippet.find("""{"label":"""):]
+                    lookup_idx += 1
+                    continue
+
+                snippet = snippet[10:]
+                title_end_idx = snippet.find("von sportstudio fußball") - 1
+                title = snippet[:title_end_idx]
+                title = title.replace("\u202f", " ")
+                title = title.replace("\u2013", "-")
+
+                snippet = snippet[title_end_idx + 2 + len("von sportstudio fußball"):]
+                clicks_end_idx = snippet.find("Aufrufe") - 1
+                clicks = snippet[:clicks_end_idx]
+
+                snippet = snippet[snippet.find("""{"label":"""):]
+                snippet = snippet[snippet.find("simpleText") + 13:]
+                time_end_idx = snippet.find("}") - 1
+                str_time = snippet[:time_end_idx]
+
+                snippet = snippet[snippet.find("videoId") + len("videoId") + 3:]
+                url = snippet[:11]
+
+                league = None
+                season = None
+                match playlist_number:
+                    case 0:
+                        league = "Bundesliga"
+                        season = "2021/22"
+                    case 1:
+                        league = "Bundesliga"
+                        season = "2022/23"
+                    case 2:
+                        league = "Bundesliga"
+                        season = "2023/24"
+                    case 3:
+                        league = "2. Bundesliga"
+                        match idx:
+                            case 0:
+                                season = "2021/22"
+                            case 1:
+                                season = "2022/23"
+                            case 2:
+                                season = "2023/24"
+                    case 4:
+                        league = "DFB-Pokal"
+                        match idx:
+                            case 0:
+                                season = "2022/23"
+                            case 1:
+                                season = "2023/24"
+                    case 5:
+                        league = "Relegation"
+                        match idx:
+                            case 0:
+                                season = "2021/22"
+                            case 1:
+                                season = "2022/23"
+                            case 2:
+                                season = "2023/24"
+
+                game = Game(title, clicks, str_time, url, league, season)
+                games.append(game)
+
+                snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
+                snippet = snippet[snippet.find("""{"label":"""):]
+
+                playlist_idx += 1
+                lookup_idx += 1
+
+    return games
 
 def collect_data():
     season = dict()
 
     urls = create_urls()
-
     for idx, url in enumerate(urls):
 
         line = url.split(",")
@@ -45,6 +237,7 @@ def collect_data():
                 lookup_idx += 1
                 continue
 
+
             key = "video" + str(playlist_idx)
             value = {}
             snippet = snippet[10:]
@@ -60,6 +253,9 @@ def collect_data():
             time_end_idx = snippet.find("}") - 1
             value["time"] = snippet[:time_end_idx]
 
+            snippet = snippet[snippet.find("videoId") + len("videoId") + 3:]
+            value["url"] = snippet[:11]
+
             videos[key] = value
 
             snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
@@ -70,7 +266,7 @@ def collect_data():
 
         key = "Spieltag" + str(idx + 1)
         season[key] = videos
-
+    print(season)
     return season
 
 
@@ -127,6 +323,46 @@ def get_season_dict():
 
     return season
 
+
+def parse_data_class(game: Game, synonyms):
+    match = game.title
+    highlight_check = match[:match.find("Highlights")]
+    if highlight_check.find("|") == -1:
+        match = match[:match.find("Highlights") - 1]
+    else:
+        match = match[:match.find("|") - 1]
+    vs_idx = match.find(" - ")
+    if vs_idx == -1:
+        vs_idx = match.find(" – ")
+    team1 = match[:vs_idx]
+    team2 = match[vs_idx + 3:]
+
+    while team1[-1] == " ":
+        team1 = team1[:-1]
+    while team2[-1] == " ":
+        team2 = team2[:-1]
+
+    for team in synonyms:
+        synonym = synonyms[team]
+        if team1 in synonym:
+            team1 = team
+            break
+    else:
+        pass
+        #print(team1)                        #print debug
+        #print(game.title)
+    for team in synonyms:
+        synonym = synonyms[team]
+        if team2 in synonym:
+            team2 = team
+            break
+    else:
+        pass
+        #print(team2)                        #print debug
+        #print(game.title)
+
+    game.home_team = team1
+    game.away_team = team2
 
 def parse_data(season, synonyms):
     views = dict()
@@ -288,9 +524,35 @@ def update_home_away_dict(views_opponent):
                 file.write("\n")
 
 
-collect = False
-override = True
+def create_sql():
+    sql_string = """INSERT INTO processed_data (title, home_team, away_team, int_views, int_seconds, competition, season, video_id) VALUES """
 
+    with open("games.json", "r") as json_file:
+        games_dict = json.load(json_file)
+        for key, game in games_dict.items():
+            title = game["title"]
+            home = game["home_team"]
+            away = game["away_team"]
+            views = game["int_views"]
+            seconds = game["int_seconds"]
+            competition = game["competition"]
+            season = game["season"]
+            video_id = game["videoId"]
+
+            sql_string += f"""("{title}", "{home}", "{away}", {views}, {seconds}, "{competition}", "{season}", "{video_id}"),"""
+
+    sql_string = sql_string[:-1]
+    sql_string += ";"
+
+    with open("sql_string.txt", "w") as sqlFile:
+        sqlFile.write(sql_string)
+
+
+
+collect = False
+override = False
+get_sql = True
+to_json = False
 
 def main():
     if collect:
@@ -305,7 +567,36 @@ def main():
         number_of_games = create_number_of_games(views)
         update_comprehensive(mean_views, mean_times, number_of_games, views, synonyms)
         update_home_away_dict(views_opponent)
+    if get_sql:
+        create_sql()
+    if to_json:
+        games = collect_data_class()
+        with open("playlists/Supercup_games.txt", "r") as file:
+            f = file.readlines()
+            lines = []
+            for line in f:
+                lines.append(line.strip())
 
+            for idx, videoId in enumerate(lines):
+                league = "DFL-Supercup"
+                season = None
+                match idx:
+                    case 0:
+                        season = "2021/22"
+                    case 1:
+                        season = "2022/23"
+                    case 2:
+                        season = "2023/24"
+                games.append(collect_data_game(videoId, league, season))
+
+        games_dictionary = {}
+        for idx, game in enumerate(games):
+            games_dictionary[f"game{idx}"] = game.to_dict()
+        games_json = json.dumps(games_dictionary, indent=3)
+        with open("games.json", "w") as json_file:
+            json_file.write(games_json)
 
 if __name__ == "__main__":
     main()
+
+    #pdo_connection = pdo.PDO("module=mysql;host=localhost;user=main_acc;passwd=pass;db=sportstudio_datamining")

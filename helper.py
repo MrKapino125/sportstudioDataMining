@@ -43,3 +43,16 @@ def sort_dict_by_values_and_games(means, games):
     sorted_less_than_or_equal_5 = dict(sorted(less_than_or_equal_5.items(), key=lambda x: x[1], reverse=True))
 
     return {**sorted_greater_than_5, **sorted_less_than_or_equal_5}
+
+def time_to_int(string: str):
+    minutes_seconds = string.split(":")
+    int_time = 0
+
+    minutes_seconds.reverse()
+    for i, val in enumerate(minutes_seconds):
+        if i == 0:
+            continue
+        int_time += int(val)*i*60
+    int_time += int(minutes_seconds[0])
+
+    return int_time
