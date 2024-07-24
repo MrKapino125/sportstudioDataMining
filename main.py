@@ -1,6 +1,6 @@
 import requests
-import helper
-import pdo
+import asyncio
+import aiohttp
 import json
 import ast
 
@@ -46,11 +46,7 @@ def get_urls_from_txt(idx=None):
     return urls
 
 
-def collect_data_game(videoId, league, season):
-    q = "https://www.youtube.com/watch?v=" + videoId
-    response = requests.get(q)
-    snippet = response.text
-
+def collect_data_game(snippet, league, season, playlist_id=None):
     snippet = snippet[snippet.find("""videoDetails":""") + len("""videoDetails":"""):]
     bracketsOpen = 0
     for idx, character in enumerate(snippet):
@@ -67,30 +63,97 @@ def collect_data_game(videoId, league, season):
     videoDetails = ast.literal_eval(snippet)
 
     game = dict()
-    game["video_id"] = videoDetails["videoId"]
-    game["title"] = videoDetails["title"]
-    game["int_seconds"] = int(videoDetails["lengthSeconds"])
-    game["keywords"] = videoDetails["keywords"]
-    game["description"] = videoDetails["shortDescription"]
+    game["video_id"] = videoDetails.get("videoId")
+
+    game["title"] = videoDetails.get("title")
+    #if game["title"] is None: print("title: " + game["video_id"])
+
+    home_team, away_team = get_home_away_team(game["title"])
+    game["home_team"] = home_team
+    game["away_team"] = away_team
+
+    game["int_seconds"] = videoDetails.get("lengthSeconds")
+    if game["int_seconds"] is not None: game["int_seconds"] = int(game["int_seconds"])
+    #if game["int_seconds"] is None: print("int_seconds: " + game["video_id"])
+
+    game["keywords"] = videoDetails.get("keywords")
+    #if game["keywords"] is None: print("keywords: " + game["video_id"])
+
+    game["description"] = videoDetails.get("shortDescription")
+    #if game["description"] is None: print("description: " + game["video_id"])
+
     #game["thumbnail"] = videoDetails["thumbnail"]["thumbnails"]
-    game["int_views"] = int(videoDetails["viewCount"])
+    #if game["thumbnail"] is None: print(game["video_id"])
+
+    game["int_views"] = videoDetails.get("viewCount")
+    if game["int_views"] is not None: game["int_views"] = int(game["int_views"])
+    #if game["int_views"] is None: print("int_views: " + game["video_id"])
+
     game["competition"] = league
     game["season"] = season
+    game["playlist_id"] = playlist_id
 
     return game
 
 
-def collect_data_playlist(playlistId, length, avoid, league, season):
-    games = []
+def get_home_away_team(title):
+    if title is None:
+        return
 
+    synonyms = get_synonyms()
+
+    title = title.replace("\u202F", " ")
+    highlight_check = title[:title.find("Highlights")]
+    if highlight_check.find("|") == -1:
+        title = title[:title.find("Highlights") - 1]
+    else:
+        title = title[:title.find("|") - 1]
+    vs_idx = title.find(" - ")
+    if vs_idx == -1:
+        vs_idx = title.find(" – ")
+    team1 = title[:vs_idx]
+    team2 = title[vs_idx + 3:]
+
+    while team1[-1] == " ":
+        team1 = team1[:-1]
+    while team2[-1] == " ":
+        team2 = team2[:-1]
+
+    home_team = None
+    away_team = None
+    for team in synonyms:
+        synonym = synonyms[team]
+        if team1 in synonym:
+            home_team = team
+            break
+    else:
+        print(team1)  # print debug
+        print(title)
+    for team in synonyms:
+        synonym = synonyms[team]
+        if team2 in synonym:
+            away_team = team
+            break
+    else:
+        print(team2)  # print debug
+        print(title)
+
+    if home_team is None or away_team is None:
+        raise Exception("Synonym Missing")
+
+    return home_team, away_team
+
+
+def get_videoIds_from_playlistId(playlistId, length, avoid):
     q = "https://www.youtube.com/playlist?list=" + playlistId
     response = requests.get(q)
     snippet = response.text
+    snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
+    snippet = snippet[snippet.find("""{"label":"""):]
 
+    videoIds = []
     for idx in range(length):
-        print(f"Game {idx+1}/{length}")
-
-        videoIdx = idx+1
+        videoIdx = idx + 1
         if videoIdx in avoid:
             snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
             snippet = snippet[snippet.find("""{"label":"""):]
@@ -98,30 +161,23 @@ def collect_data_playlist(playlistId, length, avoid, league, season):
 
         snippet = snippet[snippet.find("videoId") + len("videoId") + 3:]
         videoId = snippet[:11]
-
-        game = collect_data_game(videoId, league, season)
-        games.append(game)
+        videoIds.append(videoId)
 
         snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
         snippet = snippet[snippet.find("""{"label":"""):]
 
-    return games
+    return videoIds
+
+
+def get_snippet(videoId):
+    q = "https://www.youtube.com/watch?v=" + videoId
+    response = requests.get(q)
+    return response.text
 
 
 def get_synonyms():
-    synonyms = dict()
-
-    with open("synonyms.txt", "r") as f:
-        file = f.readlines()
-        synonyms_lines = []
-        for line in file:
-            synonyms_lines.append(line.strip())
-        for line in synonyms_lines:
-            club = line[:line.find(":")]
-            line = line[line.find(":") + 1:]
-            synonyms[club] = line.split(",")
-
-    return synonyms
+    with open("jsonfiles/synonyms.json", "r") as json_file:
+        return json.load(json_file)
 
 
 def create_sql():
@@ -148,17 +204,6 @@ def create_sql():
         sqlFile.write(sql_string)
 
 
-def playlist_to_dict(playlist_string, league, season):
-    playlist_id, length, avoid = parse_playlist_string(playlist_string)
-    games = collect_data_playlist(playlist_id, length, avoid, league, season)
-
-    games_dict = dict()
-    for idx, game in enumerate(games):
-        games_dict["game" + str(idx)] = game
-
-    return games_dict
-
-
 def parse_playlist_string(playlist_string):
     line = playlist_string.split(",")
     playlist_id = line[0]
@@ -179,6 +224,15 @@ def get_league_season(playlist_number, idx):
     league = None
     season = None
     match playlist_number:
+        case -1:
+            league = "DFL-Supercup"
+            match idx:
+                case 0:
+                    season = "2021/22"
+                case 1:
+                    season = "2022/23"
+                case 2:
+                    season = "2023/24"
         case 0:
             league = "Bundesliga"
             season = "2021/22"
@@ -216,56 +270,126 @@ def get_league_season(playlist_number, idx):
     return league, season
 
 
-get_sql = False
-to_json = True
+def get_game_tasks(session, videoIds):
+    tasks = []
+    for videoId in videoIds:
+        tasks.append(asyncio.create_task(session.get("https://www.youtube.com/watch?v=" + videoId, ssl=False)))
+    return tasks
+
+
+async def collect_data_playlist(videoIds, videoIds_dict, playlistIds_dict):
+    games = []
+    video_number = 1
+
+    async with aiohttp.ClientSession() as session:
+        tasks = get_game_tasks(session, videoIds)
+        responses = await asyncio.gather(*tasks)
+        for response in responses:
+            snippet = await response.text()
+            url = str(response.request_info.url)
+
+            videoId = url[-11:]
+            playlistId = videoIds_dict[videoId]
+            playlist_number = playlistIds_dict[playlistId]["playlist_number"]
+            index = playlistIds_dict[playlistId]["index"]
+
+            league, season = get_league_season(playlist_number, index)
+            game = collect_data_game(snippet, league, season, playlistId)
+            games.append(game)
+
+            print(f"Video {video_number}/{len(videoIds)} completed")
+            video_number += 1
+
+        return games
+
+
+def update_jsonfiles():
+    playlist_dict = dict()
+    videoIds_dict = dict()
+    for playlist_number in range(6):
+        print(f"Playlist Group {playlist_number + 1}/6")
+        urls = get_urls_from_txt(playlist_number)
+
+        for idx, url in enumerate(urls):
+            print(f"Playlist {idx + 1}/{len(urls)}")
+            playlist_id, length, avoid = parse_playlist_string(url)
+            videoIds = get_videoIds_from_playlistId(playlist_id, length, avoid)
+            playlist_dict[playlist_id] = dict()
+            playlist_dict[playlist_id]["playlist_number"] = playlist_number
+            playlist_dict[playlist_id]["index"] = idx
+            playlist_dict[playlist_id]["videoIds"] = videoIds
+
+            for videoId in videoIds:
+                videoIds_dict[videoId] = playlist_id
+
+    with open("playlists/Supercup_games.txt", "r") as file:
+        f = file.readlines()
+        videoIds = []
+        for line in f:
+            videoIds.append(line.strip())
+
+        mock_playlist_id = "Supercup"
+        playlist_dict[mock_playlist_id] = dict()
+        playlist_dict[mock_playlist_id]["videoIds"] = []
+        for idx, videoId in enumerate(videoIds):
+            videoIds_dict[videoId] = mock_playlist_id
+            playlist_dict[mock_playlist_id]["playlist_number"] = -1
+            playlist_dict[mock_playlist_id]["index"] = idx
+            playlist_dict[mock_playlist_id]["videoIds"].append(videoId)
+
+    videoIds_json = json.dumps(videoIds_dict, indent=3)
+    with open("jsonfiles/videoId_to_playlistId.json", "w") as json_file:
+        json_file.write(videoIds_json)
+
+    playlist_ids_json = json.dumps(playlist_dict, indent=3)
+    with open("jsonfiles/playlistIds.json", "w") as json_file:
+        json_file.write(playlist_ids_json)
+
+
+def create_games_json_file():
+    games = []
+
+    with open("jsonfiles/videoId_to_playlistId.json", "r") as videoIds_json_file, open("jsonfiles/playlistIds.json",
+                                                                             "r") as playlist_ids_json_file:
+        videoIds_dict = json.load(videoIds_json_file)
+        playlistIds_dict = json.load(playlist_ids_json_file)
+
+        videoIds = list(videoIds_dict.keys())
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
+        multiplier = 100
+        x = 1
+        print(f"{0}/{len(videoIds)}")
+        while multiplier * x <= len(videoIds):
+            games += asyncio.run(
+                collect_data_playlist(videoIds[(x - 1) * multiplier:multiplier * x], videoIds_dict, playlistIds_dict))
+            print(f"{x * multiplier}/{len(videoIds)}")
+            x += 1
+
+        games += asyncio.run(collect_data_playlist(videoIds[(x - 1) * 100:], videoIds_dict, playlistIds_dict))
+
+    games_dict = dict()
+    for idx, game_dict in enumerate(games):
+        games_dict["game" + str(idx)] = game_dict
+
+    games_json = json.dumps(games_dict, indent=3)
+    with open("games.json", "w") as json_file:
+        json_file.write(games_json)
+
+
+CREATE_SQL = False
+CREATE_GAMES_JSON = False
+CREATE_PLAYLIST_VIDEO_IDS = False
+
 
 def main():
-    if get_sql:
+    if CREATE_SQL:
         create_sql()
-    if to_json:
-        games_dicts = []
-        #for playlist_number in range(6):
-            #print(f"Playlist Group {playlist_number + 1}/6")
-
-            #urls = get_urls_from_txt(playlist_number)
-
-            #for idx, playlist_string in enumerate(urls):
-                #print(f"Playlist {idx + 1}/{len(urls)}")
-                #league, season = get_league_season(playlist_number, idx)
-                #games_dicts.append(playlist_to_dict(playlist_string, league, season))
-
-        with open("playlists/Supercup_games.txt", "r") as file:
-            f = file.readlines()
-            lines = []
-            for line in f:
-                lines.append(line.strip())
-
-            for idx, videoId in enumerate(lines):
-                league = "DFL-Supercup"
-                season = None
-                match idx:
-                    case 0:
-                        season = "2021/22"
-                    case 1:
-                        season = "2022/23"
-                    case 2:
-                        season = "2023/24"
-                games_dicts.append(collect_data_game(videoId, league, season))
-
-        games_dict = dict()
-        for idx, game_dict in enumerate(games_dicts):
-            games_dict["game" + str(idx)] = game_dict
-
-        games_json = json.dumps(games_dict, indent=3)
-        with open("games_test.json", "w") as json_file:
-            json_file.write(games_json)
-
+    if CREATE_PLAYLIST_VIDEO_IDS:
+        update_jsonfiles()
+    if CREATE_GAMES_JSON:
+        create_games_json_file()
 
 
 if __name__ == "__main__":
     main()
-
-    #games_json = json.dumps(games_dict, indent=3)
-    #with open("games_test.json", "w", encoding="utf-8") as json_file:
-        #json_file.write(games_json)
-    #pdo_connection = pdo.PDO("module=mysql;host=localhost;user=main_acc;passwd=pass;db=sportstudio_datamining")
