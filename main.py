@@ -5,45 +5,83 @@ import json
 import ast
 
 
-def get_urls_from_txt(idx=None):
-    urls = []
-    match idx:
-        case 0:
-            with open("playlists/Season2122.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case 1:
-            with open("playlists/Season2223.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case 2:
-            with open("playlists/Season2324.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case 3:
-            with open("playlists/2Bundesliga.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case 4:
-            with open("playlists/DFBPokal.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case 5:
-            with open("playlists/Relegation.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case _:
-            with open("playlist_urls.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-    return urls
+async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict):
+    games = []
+    video_number = 1
+
+    async with aiohttp.ClientSession() as session:
+        tasks = get_game_tasks(session, videoIds)
+        responses = await asyncio.gather(*tasks)
+        for response in responses:
+            snippet = await response.text()
+            url = str(response.request_info.url)
+
+            videoId = url[-11:]
+            playlistId = videoIds_dict[videoId]
+            playlist_number = playlistIds_dict[playlistId]["playlist_number"]
+            index = playlistIds_dict[playlistId]["index"]
+
+            league, season = get_league_season(playlist_number, index)
+            game = collect_data_game(snippet, league, season, playlistId)
+            games.append(game)
+
+            print(f"Video {video_number}/{len(videoIds)} completed")
+            video_number += 1
+
+        return games
+
+
+def get_game_tasks(session, videoIds):
+    tasks = []
+    for videoId in videoIds:
+        tasks.append(asyncio.create_task(session.get("https://www.youtube.com/watch?v=" + videoId, ssl=False)))
+    return tasks
+
+
+def parse_playlist_string(playlist_string):
+    line = playlist_string.split(",")
+    playlist_id = line[0]
+    avoid = []
+    length = 9
+    if len(line) == 2:
+        avoid = [int(line[1])]
+    elif len(line) > 2:
+        length = int(line[-1])
+        if line[1] != "":
+            for a in line[1:-1]:
+                avoid.append(int(a))
+
+    return playlist_id, length, tuple(avoid)
+
+
+def get_synonyms():
+    with open("jsonfiles/synonyms.json", "r") as json_file:
+        return json.load(json_file)
+
+
+def get_videoIds_from_playlistId(playlistId, length, avoid):
+    q = "https://www.youtube.com/playlist?list=" + playlistId
+    response = requests.get(q)
+    snippet = response.text
+    snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
+    snippet = snippet[snippet.find("""{"label":"""):]
+
+    videoIds = []
+    for idx in range(length):
+        videoIdx = idx + 1
+        if videoIdx in avoid:
+            snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
+            snippet = snippet[snippet.find("""{"label":"""):]
+            continue
+
+        snippet = snippet[snippet.find("videoId") + len("videoId") + 3:]
+        videoId = snippet[:11]
+        videoIds.append(videoId)
+
+        snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
+        snippet = snippet[snippet.find("""{"label":"""):]
+
+    return videoIds
 
 
 def collect_data_game(snippet, league, season, playlist_id=None):
@@ -144,80 +182,45 @@ def get_home_away_team(title):
     return home_team, away_team
 
 
-def get_videoIds_from_playlistId(playlistId, length, avoid):
-    q = "https://www.youtube.com/playlist?list=" + playlistId
-    response = requests.get(q)
-    snippet = response.text
-    snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
-    snippet = snippet[snippet.find("""{"label":"""):]
-
-    videoIds = []
-    for idx in range(length):
-        videoIdx = idx + 1
-        if videoIdx in avoid:
-            snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
-            snippet = snippet[snippet.find("""{"label":"""):]
-            continue
-
-        snippet = snippet[snippet.find("videoId") + len("videoId") + 3:]
-        videoId = snippet[:11]
-        videoIds.append(videoId)
-
-        snippet = snippet[snippet.find("""thumbnail":{"thumbnails":[{"url"""):]
-        snippet = snippet[snippet.find("""{"label":"""):]
-
-    return videoIds
-
-
-def get_snippet(videoId):
-    q = "https://www.youtube.com/watch?v=" + videoId
-    response = requests.get(q)
-    return response.text
-
-
-def get_synonyms():
-    with open("jsonfiles/synonyms.json", "r") as json_file:
-        return json.load(json_file)
-
-
-def create_sql():
-    sql_string = """INSERT INTO processed_data (title, home_team, away_team, int_views, int_seconds, competition, season, video_id) VALUES """
-
-    with open("games.json", "r") as json_file:
-        games_dict = json.load(json_file)
-        for key, game in games_dict.items():
-            title = game["title"]
-            home = game["home_team"]
-            away = game["away_team"]
-            views = game["int_views"]
-            seconds = game["int_seconds"]
-            competition = game["competition"]
-            season = game["season"]
-            video_id = game["videoId"]
-
-            sql_string += f"""("{title}", "{home}", "{away}", {views}, {seconds}, "{competition}", "{season}", "{video_id}"),"""
-
-    sql_string = sql_string[:-1]
-    sql_string += ";"
-
-    with open("sql_string.txt", "w") as sqlFile:
-        sqlFile.write(sql_string)
-
-
-def parse_playlist_string(playlist_string):
-    line = playlist_string.split(",")
-    playlist_id = line[0]
-    avoid = []
-    length = 9
-    if len(line) == 2:
-        avoid = [int(line[1])]
-    elif len(line) > 2:
-        length = int(line[-1])
-        if line[1] != "":
-            for a in line[1:-1]:
-                avoid.append(int(a))
-
-    return playlist_id, length, tuple(avoid)
+def get_urls_from_txt(idx=None):
+    urls = []
+    match idx:
+        case 0:
+            with open("playlists/Season2122.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 1:
+            with open("playlists/Season2223.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 2:
+            with open("playlists/Season2324.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 3:
+            with open("playlists/2Bundesliga.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 4:
+            with open("playlists/DFBPokal.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case 5:
+            with open("playlists/Relegation.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case _:
+            with open("playlist_urls.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+    return urls
 
 
 def get_league_season(playlist_number, idx):
@@ -269,38 +272,29 @@ def get_league_season(playlist_number, idx):
                     season = "2023/24"
     return league, season
 
+# MAIN FUNCTIONS
+def create_sql():
+    sql_string = """INSERT INTO processed_data (title, home_team, away_team, int_views, int_seconds, competition, season, video_id) VALUES """
 
-def get_game_tasks(session, videoIds):
-    tasks = []
-    for videoId in videoIds:
-        tasks.append(asyncio.create_task(session.get("https://www.youtube.com/watch?v=" + videoId, ssl=False)))
-    return tasks
+    with open("games.json", "r") as json_file:
+        games_dict = json.load(json_file)
+        for key, game in games_dict.items():
+            title = game["title"]
+            home = game["home_team"]
+            away = game["away_team"]
+            views = game["int_views"]
+            seconds = game["int_seconds"]
+            competition = game["competition"]
+            season = game["season"]
+            video_id = game["videoId"]
 
+            sql_string += f"""("{title}", "{home}", "{away}", {views}, {seconds}, "{competition}", "{season}", "{video_id}"),"""
 
-async def collect_data_playlist(videoIds, videoIds_dict, playlistIds_dict):
-    games = []
-    video_number = 1
+    sql_string = sql_string[:-1]
+    sql_string += ";"
 
-    async with aiohttp.ClientSession() as session:
-        tasks = get_game_tasks(session, videoIds)
-        responses = await asyncio.gather(*tasks)
-        for response in responses:
-            snippet = await response.text()
-            url = str(response.request_info.url)
-
-            videoId = url[-11:]
-            playlistId = videoIds_dict[videoId]
-            playlist_number = playlistIds_dict[playlistId]["playlist_number"]
-            index = playlistIds_dict[playlistId]["index"]
-
-            league, season = get_league_season(playlist_number, index)
-            game = collect_data_game(snippet, league, season, playlistId)
-            games.append(game)
-
-            print(f"Video {video_number}/{len(videoIds)} completed")
-            video_number += 1
-
-        return games
+    with open("sql_string.txt", "w") as sqlFile:
+        sqlFile.write(sql_string)
 
 
 def update_jsonfiles():
@@ -362,11 +356,10 @@ def create_games_json_file():
         print(f"{0}/{len(videoIds)}")
         while multiplier * x <= len(videoIds):
             games += asyncio.run(
-                collect_data_playlist(videoIds[(x - 1) * multiplier:multiplier * x], videoIds_dict, playlistIds_dict))
+                collect_data_from_videoIds(videoIds[(x - 1) * multiplier:multiplier * x], videoIds_dict, playlistIds_dict))
             print(f"{x * multiplier}/{len(videoIds)}")
             x += 1
-
-        games += asyncio.run(collect_data_playlist(videoIds[(x - 1) * 100:], videoIds_dict, playlistIds_dict))
+        games += asyncio.run(collect_data_from_videoIds(videoIds[(x - 1) * 100:], videoIds_dict, playlistIds_dict))
 
     games_dict = dict()
     for idx, game_dict in enumerate(games):
