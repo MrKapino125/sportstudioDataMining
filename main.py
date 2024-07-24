@@ -378,8 +378,8 @@ def create_games_json_file():
 
 
 CREATE_SQL = False
+CREATE_PLAYLIST_VIDEO_IDS = True
 CREATE_GAMES_JSON = False
-CREATE_PLAYLIST_VIDEO_IDS = False
 
 
 def main():
