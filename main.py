@@ -272,11 +272,12 @@ def get_league_season(playlist_number, idx):
                     season = "2023/24"
     return league, season
 
+
 # MAIN FUNCTIONS
 def create_sql():
-    sql_string = """INSERT INTO processed_data (title, home_team, away_team, int_views, int_seconds, competition, season, video_id) VALUES """
+    sql_string = """INSERT INTO all_data (title, home_team, away_team, int_views, int_seconds, competition, season, video_id) VALUES """
 
-    with open("games.json", "r") as json_file:
+    with open("games.json", "r", encoding="utf-8") as json_file:
         games_dict = json.load(json_file)
         for key, game in games_dict.items():
             title = game["title"]
@@ -286,14 +287,16 @@ def create_sql():
             seconds = game["int_seconds"]
             competition = game["competition"]
             season = game["season"]
-            video_id = game["videoId"]
+            video_id = game["video_id"]
 
             sql_string += f"""("{title}", "{home}", "{away}", {views}, {seconds}, "{competition}", "{season}", "{video_id}"),"""
 
     sql_string = sql_string[:-1]
     sql_string += ";"
 
-    with open("sql_string.txt", "w") as sqlFile:
+    sql_string = sql_string.replace("#", "\#")
+
+    with open("sql_string.txt", "w", encoding="utf-8") as sqlFile:
         sqlFile.write(sql_string)
 
 
@@ -371,7 +374,7 @@ def create_games_json_file():
 
 
 CREATE_SQL = False
-CREATE_PLAYLIST_VIDEO_IDS = True
+CREATE_PLAYLIST_VIDEO_IDS = False
 CREATE_GAMES_JSON = False
 
 
