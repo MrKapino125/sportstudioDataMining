@@ -9,6 +9,7 @@ async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict):
     games = []
     video_number = 1
 
+    #connector=aiohttp.TCPConnector(limit=200)
     async with aiohttp.ClientSession() as session:
         tasks = get_game_tasks(session, videoIds)
         responses = await asyncio.gather(*tasks)
@@ -182,9 +183,9 @@ def get_home_away_team(title):
     return home_team, away_team
 
 
-def get_urls_from_txt(idx=None):
+def get_urls_from_txt(playlist_number):
     urls = []
-    match idx:
+    match playlist_number:
         case 0:
             with open("playlists/Season2122.txt", "r") as f:
                 file = f.readlines()
@@ -212,11 +213,6 @@ def get_urls_from_txt(idx=None):
                     urls.append(line.strip())
         case 5:
             with open("playlists/Relegation.txt", "r") as f:
-                file = f.readlines()
-                for line in file:
-                    urls.append(line.strip())
-        case _:
-            with open("playlist_urls.txt", "r") as f:
                 file = f.readlines()
                 for line in file:
                     urls.append(line.strip())
@@ -254,6 +250,8 @@ def get_league_season(playlist_number, idx):
                     season = "2022/23"
                 case 2:
                     season = "2023/24"
+                case 3:
+                    season = "2024/25"
         case 4:
             league = "DFB-Pokal"
             match idx:
@@ -294,7 +292,7 @@ def create_sql():
     sql_string = sql_string[:-1]
     sql_string += ";"
 
-    sql_string = sql_string.replace("#", "\#")
+    sql_string = sql_string.replace('#', '\\#')
 
     with open("sql_string.txt", "w", encoding="utf-8") as sqlFile:
         sqlFile.write(sql_string)
@@ -350,19 +348,19 @@ def create_games_json_file():
                                                                              "r") as playlist_ids_json_file:
         videoIds_dict = json.load(videoIds_json_file)
         playlistIds_dict = json.load(playlist_ids_json_file)
-
         videoIds = list(videoIds_dict.keys())
+
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-        multiplier = 100
+        asynchrounous_calls_at_a_time = 100 #max 100
         x = 1
         print(f"{0}/{len(videoIds)}")
-        while multiplier * x <= len(videoIds):
+        while asynchrounous_calls_at_a_time * x <= len(videoIds):
             games += asyncio.run(
-                collect_data_from_videoIds(videoIds[(x - 1) * multiplier:multiplier * x], videoIds_dict, playlistIds_dict))
-            print(f"{x * multiplier}/{len(videoIds)}")
+                collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:asynchrounous_calls_at_a_time * x], videoIds_dict, playlistIds_dict))
+            print(f"{x * asynchrounous_calls_at_a_time}/{len(videoIds)}")
             x += 1
-        games += asyncio.run(collect_data_from_videoIds(videoIds[(x - 1) * 100:], videoIds_dict, playlistIds_dict))
+        games += asyncio.run(collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:], videoIds_dict, playlistIds_dict))
 
     games_dict = dict()
     for idx, game_dict in enumerate(games):
