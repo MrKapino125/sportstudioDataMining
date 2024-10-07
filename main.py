@@ -3,9 +3,15 @@ import asyncio
 import aiohttp
 import json
 import ast
+import random
+import time
 
+
+scrape_protection_detected = False
 
 async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict):
+    global scrape_protection_detected
+
     games = []
     video_number = 1
 
@@ -15,15 +21,24 @@ async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict):
         responses = await asyncio.gather(*tasks)
         for response in responses:
             snippet = await response.text()
+            if scrape_protection_detected:
+                continue
+
             url = str(response.request_info.url)
 
-            videoId = url[-11:]
+            videoIdIdx = url.find("watch?v=") + len("watch?v=")
+            videoId = url[videoIdIdx:videoIdIdx+11]
             playlistId = videoIds_dict[videoId]
             playlist_number = playlistIds_dict[playlistId]["playlist_number"]
             index = playlistIds_dict[playlistId]["index"]
 
             league, season = get_league_season(playlist_number, index)
-            game = collect_data_game(snippet, league, season, playlistId)
+            try:
+                game = collect_data_game(snippet, league, season, playlistId)
+            except Exception as e:
+                scrape_protection_detected = True
+                print(e)
+                continue
             games.append(game)
 
             print(f"Video {video_number}/{len(videoIds)} completed")
@@ -102,10 +117,13 @@ def collect_data_game(snippet, league, season, playlist_id=None):
     videoDetails = ast.literal_eval(snippet)
 
     game = dict()
-    game["video_id"] = videoDetails.get("videoId")
+    game["videoId"] = videoDetails.get("videoId")
+    if game["videoId"] is None:
+        raise Exception("Scrape Protection Detected!")
 
     game["title"] = videoDetails.get("title")
-    #if game["title"] is None: print("title: " + game["video_id"])
+    if game["title"] is None:
+        raise Exception("Scrape Protection Detected!")
 
     home_team, away_team = get_home_away_team(game["title"])
     game["home_team"] = home_team
@@ -124,6 +142,8 @@ def collect_data_game(snippet, league, season, playlist_id=None):
     #game["thumbnail"] = videoDetails["thumbnail"]["thumbnails"]
     #if game["thumbnail"] is None: print(game["video_id"])
 
+    #idx = find_index_helper(videoDetails["subtitle"]["runs"])
+    #game["int_views"] = int(snippet["subtitle"]["runs"][idx]["text"].split()[0].replace('.', ''))
     game["int_views"] = videoDetails.get("viewCount")
     if game["int_views"] is not None: game["int_views"] = int(game["int_views"])
     #if game["int_views"] is None: print("int_views: " + game["video_id"])
@@ -134,6 +154,11 @@ def collect_data_game(snippet, league, season, playlist_id=None):
 
     return game
 
+def find_index_helper(l):
+    for index, e in enumerate(l):
+        if 'Aufrufe' in e.get('text', ''):
+            return index
+    return -1
 
 def get_home_away_team(title):
     if title is None:
@@ -250,8 +275,6 @@ def get_league_season(playlist_number, idx):
                     season = "2022/23"
                 case 2:
                     season = "2023/24"
-                case 3:
-                    season = "2024/25"
         case 4:
             league = "DFB-Pokal"
             match idx:
@@ -355,25 +378,40 @@ def create_games_json_file():
         asynchrounous_calls_at_a_time = 100 #max 100
         x = 1
         print(f"{0}/{len(videoIds)}")
-        while asynchrounous_calls_at_a_time * x <= len(videoIds):
+        while asynchrounous_calls_at_a_time * x <= len(videoIds) and not scrape_protection_detected:
             games += asyncio.run(
                 collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:asynchrounous_calls_at_a_time * x], videoIds_dict, playlistIds_dict))
             print(f"{x * asynchrounous_calls_at_a_time}/{len(videoIds)}")
             x += 1
-        games += asyncio.run(collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:], videoIds_dict, playlistIds_dict))
+
+            #delay = random.uniform(0, 3)
+            #print("delay:" + str(delay))
+            #time.sleep(delay)
+        if not scrape_protection_detected:
+            games += asyncio.run(collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:], videoIds_dict, playlistIds_dict))
 
     games_dict = dict()
     for idx, game_dict in enumerate(games):
         games_dict["game" + str(idx)] = game_dict
 
     games_json = json.dumps(games_dict, indent=3)
-    with open("games.json", "w") as json_file:
+
+    games_file = "games.json"
+    if scrape_protection_detected:
+        games_file = "games_emergency.json"
+
+    with open(games_file, "w") as json_file:
         json_file.write(games_json)
+
+
+def find_scores_and_dates(games_dict: dict):
+    pass
 
 
 CREATE_SQL = False
 CREATE_PLAYLIST_VIDEO_IDS = False
-CREATE_GAMES_JSON = False
+CREATE_GAMES_JSON = True
+FIND_SCORES_AND_DATES = False
 
 
 def main():
@@ -383,6 +421,8 @@ def main():
         update_jsonfiles()
     if CREATE_GAMES_JSON:
         create_games_json_file()
+    if FIND_SCORES_AND_DATES:
+        pass
 
 
 if __name__ == "__main__":
