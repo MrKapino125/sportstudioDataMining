@@ -4,45 +4,48 @@ import aiohttp
 import json
 import ast
 import random
-import time
+from datetime import datetime
+import re
+from tqdm import tqdm
 
 
 scrape_protection_detected = False
 
-async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict):
+async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict, cancel=True):
     global scrape_protection_detected
 
     games = []
-    video_number = 1
 
     #connector=aiohttp.TCPConnector(limit=200)
     async with aiohttp.ClientSession() as session:
         tasks = get_game_tasks(session, videoIds)
         responses = await asyncio.gather(*tasks)
-        for response in responses:
-            snippet = await response.text()
-            if scrape_protection_detected:
-                continue
+        with tqdm(total=len(responses), desc="Processing Videos", leave=False) as probar:
+            for response in responses:
+                snippet = await response.text()
+                if scrape_protection_detected:
+                    continue
 
-            url = str(response.request_info.url)
+                url = str(response.request_info.url)
 
-            videoIdIdx = url.find("watch?v=") + len("watch?v=")
-            videoId = url[videoIdIdx:videoIdIdx+11]
-            playlistId = videoIds_dict[videoId]
-            playlist_number = playlistIds_dict[playlistId]["playlist_number"]
-            index = playlistIds_dict[playlistId]["index"]
+                videoIdIdx = url.find("watch?v=") + len("watch?v=")
+                videoId = url[videoIdIdx:videoIdIdx+11]
+                playlistId = videoIds_dict[videoId]
+                playlist_number = playlistIds_dict[playlistId]["playlist_number"]
+                index = playlistIds_dict[playlistId]["index"]
 
-            league, season = get_league_season(playlist_number, index)
-            try:
-                game = collect_data_game(snippet, league, season, playlistId)
-            except Exception as e:
-                scrape_protection_detected = True
-                print(e)
-                continue
-            games.append(game)
-
-            print(f"Video {video_number}/{len(videoIds)} completed")
-            video_number += 1
+                league, season = get_league_season(playlist_number, index)
+                try:
+                    game = collect_scrape_protection(snippet, league, season, playlistId)
+                    game["video_id"] = videoId
+                except Exception as e:
+                    if cancel:
+                        scrape_protection_detected = True
+                    print(f"Timeout, skipping video {videoId}")
+                    with open("skipped/snippet.txt", "w", encoding="utf-8") as json_file:
+                        json.dump(snippet, json_file, indent=2)
+                games.append(game)
+                probar.update(1)
 
         return games
 
@@ -71,7 +74,7 @@ def parse_playlist_string(playlist_string):
 
 
 def get_synonyms():
-    with open("jsonfiles/synonyms.json", "r") as json_file:
+    with open("jsonfiles/synonyms.json", "r", encoding="utf-8") as json_file:
         return json.load(json_file)
 
 
@@ -99,9 +102,56 @@ def get_videoIds_from_playlistId(playlistId, length, avoid):
 
     return videoIds
 
+def collect_scrape_protection(snippet, league, season, playlist_id=None):
+    find = """{"title":{"runs":[{"text":"""
+    snippet = snippet[snippet.find(find):]
+
+    bracketsOpen = 0
+    for idx, character in enumerate(snippet):
+        if character == "{":
+            bracketsOpen += 1
+        elif character == "}":
+            bracketsOpen -= 1
+        if bracketsOpen == 0:
+            snippet = snippet[:idx+1]
+            break
+    
+    snippet = snippet.replace("true", "True")
+    snippet = snippet.replace("false", "False")
+    videoDetails = ast.literal_eval(snippet)
+
+    game = dict()
+    #game["videoId"] = videoDetails["flexibleItems"][0]["menuFlexibleItemRenderer"]["menuItem"]["menuServiceItemRenderer"]["serviceEndpoint"]["modalEndpoint"]["modal"]["modalWithTitleAndButtonRenderer"]["button"]["buttonRenderer"]["navigationEndpoint"]["signInEndpoint"]["nextEndpoint"]["watchEndpoint"]["videoId"]
+    game["title"] = videoDetails["title"]["runs"][0]["text"]
+
+    home_team, away_team = get_home_away_team(game["title"])
+    game["home_team"] = home_team
+    game["away_team"] = away_team
+
+    views = videoDetails["viewCount"]["videoViewCountRenderer"]["viewCount"]["simpleText"]
+    views = views[:views.find(" ")]
+    game["int_views"] = int(views.replace(".", ""))
+    
+    try:
+        date = videoDetails["dateText"]["simpleText"]
+        game["date"] = re.search(r"\d{2}\.\d{2}\.\d{4}", date).group(0)
+        game["upload_d"] = (datetime.now().date() - datetime.strptime(game["date"], "%d.%m.%Y").date()).days
+    except Exception as e:
+        with open("scrape_date.json", "w", encoding="utf-8") as json_file:
+            json.dump(videoDetails, json_file, indent=2)
+        raise Exception(e)
+        
+
+    game["competition"] = league
+    game["season"] = season
+    game["playlist_id"] = playlist_id
+
+    return game
 
 def collect_data_game(snippet, league, season, playlist_id=None):
+    global once
     snippet = snippet[snippet.find("""videoDetails":""") + len("""videoDetails":"""):]
+    
     bracketsOpen = 0
     for idx, character in enumerate(snippet):
         if character == "{":
@@ -115,6 +165,10 @@ def collect_data_game(snippet, league, season, playlist_id=None):
     snippet = snippet.replace("true", "True")
     snippet = snippet.replace("false", "False")
     videoDetails = ast.literal_eval(snippet)
+    if not once:
+        with open("test.json", "w", encoding="utf-8") as json_file:
+            json.dump(videoDetails, json_file, indent=2)
+        once = True
 
     game = dict()
     game["videoId"] = videoDetails.get("videoId")
@@ -241,6 +295,11 @@ def get_urls_from_txt(playlist_number):
                 file = f.readlines()
                 for line in file:
                     urls.append(line.strip())
+        case 6:
+            with open("playlists/Season2425.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
     return urls
 
 
@@ -257,6 +316,8 @@ def get_league_season(playlist_number, idx):
                     season = "2022/23"
                 case 2:
                     season = "2023/24"
+                case 3:
+                    season = "2024/25"
         case 0:
             league = "Bundesliga"
             season = "2021/22"
@@ -275,6 +336,8 @@ def get_league_season(playlist_number, idx):
                     season = "2022/23"
                 case 2:
                     season = "2023/24"
+                case 3:
+                    season = "2024/25"
         case 4:
             league = "DFB-Pokal"
             match idx:
@@ -282,6 +345,8 @@ def get_league_season(playlist_number, idx):
                     season = "2022/23"
                 case 1:
                     season = "2023/24"
+                case 2:
+                    season = "2024/25"
         case 5:
             league = "Relegation"
             match idx:
@@ -291,6 +356,11 @@ def get_league_season(playlist_number, idx):
                     season = "2022/23"
                 case 2:
                     season = "2023/24"
+                case 3:
+                    season = "2024/25"
+        case 6:
+            league = "Bundesliga"
+            season = "2024/25"
     return league, season
 
 
@@ -321,11 +391,11 @@ def create_sql():
         sqlFile.write(sql_string)
 
 
-def update_jsonfiles():
+def update_jsonfiles(playlists=None):
     playlist_dict = dict()
     videoIds_dict = dict()
-    for playlist_number in range(6):
-        print(f"Playlist Group {playlist_number + 1}/6")
+    for playlist_number in range(7):
+        print(f"Playlist Group {playlist_number + 1}/7")
         urls = get_urls_from_txt(playlist_number)
 
         for idx, url in enumerate(urls):
@@ -364,7 +434,7 @@ def update_jsonfiles():
         json_file.write(playlist_ids_json)
 
 
-def create_games_json_file():
+def create_games_json_file(searchIds=None, cancel=True):
     games = []
 
     with open("jsonfiles/videoId_to_playlistId.json", "r") as videoIds_json_file, open("jsonfiles/playlistIds.json",
@@ -373,45 +443,89 @@ def create_games_json_file():
         playlistIds_dict = json.load(playlist_ids_json_file)
         videoIds = list(videoIds_dict.keys())
 
+        usedIds = searchIds if searchIds is not None else videoIds
+        usedIds.reverse()
+
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
         asynchrounous_calls_at_a_time = 100 #max 100
-        x = 1
-        print(f"{0}/{len(videoIds)}")
-        while asynchrounous_calls_at_a_time * x <= len(videoIds) and not scrape_protection_detected:
-            games += asyncio.run(
-                collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:asynchrounous_calls_at_a_time * x], videoIds_dict, playlistIds_dict))
-            print(f"{x * asynchrounous_calls_at_a_time}/{len(videoIds)}")
-            x += 1
 
-            #delay = random.uniform(0, 3)
-            #print("delay:" + str(delay))
-            #time.sleep(delay)
-        if not scrape_protection_detected:
-            games += asyncio.run(collect_data_from_videoIds(videoIds[(x - 1) * asynchrounous_calls_at_a_time:], videoIds_dict, playlistIds_dict))
+        with tqdm(total=len(usedIds), desc="Processing Chunks") as pbar:
+            x = 1
+            while asynchrounous_calls_at_a_time * x <= len(usedIds) and not scrape_protection_detected:
+                games += asyncio.run(
+                collect_data_from_videoIds(usedIds[(x - 1) * asynchrounous_calls_at_a_time:asynchrounous_calls_at_a_time * x], videoIds_dict, playlistIds_dict, cancel=cancel))
 
-    games_dict = dict()
-    for idx, game_dict in enumerate(games):
-        games_dict["game" + str(idx)] = game_dict
+                x += 1
+                pbar.update(asynchrounous_calls_at_a_time)
+            
+            if not scrape_protection_detected:
+                remaining_ids = usedIds[(x - 1) * asynchrounous_calls_at_a_time:]
+                if remaining_ids:
+                    games += asyncio.run(collect_data_from_videoIds(remaining_ids, videoIds_dict, playlistIds_dict, cancel=cancel))
 
-    games_json = json.dumps(games_dict, indent=3)
+                    pbar.update(len(remaining_ids))
+
+
+    games.reverse()
 
     games_file = "games.json"
     if scrape_protection_detected:
         games_file = "games_emergency.json"
 
-    with open(games_file, "w") as json_file:
-        json_file.write(games_json)
+    with open(games_file, "r", encoding="utf-8") as json_file:
+        games_dict = json.load(json_file)
+        date_now = datetime.now().strftime("%d.%m.%Y")
+        if date_now in games_dict:
+            for idx, game_dict in enumerate(games):
+                v_id = game_dict["video_id"] 
+                if v_id in games_dict[date_now]:
+                    games_dict[date_now][v_id]["int_views"] = game_dict["int_views"]
+                else:
+                    games_dict[date_now][v_id] = game_dict
+        else:
+            games_dict[date_now] = dict()
+            for idx, game_dict in enumerate(games):
+                games_dict[date_now][game_dict["video_id"]] = game_dict
+
+    
+    with open(games_file, "w", encoding="utf-8") as json_file:
+        json.dump(games_dict, json_file, indent=3)
 
 
-def find_scores_and_dates(games_dict: dict):
-    pass
+def find_scores_and_dates(video_ids=None):
+    games = []
+    not_games = []
+    with open("games.json", "r", encoding="utf-8") as json_file:
+        games_dict = json.load(json_file)
+        if video_ids is not None:
+            for key, game in games_dict.items():
+                if game["videoId"] in video_ids:
+                    games.append(game)
+                else:
+                    not_games.append(game)
+        else:
+            games = games_dict.values()
+
+        for game in games:
+            score = get_score(game)
+
+            game["home_score"] = score[0]
+            game["away_score"] = score[1]
+
+    with open("games_old.json", "w", encoding="utf-8") as json_file:
+        json_file.write(json.dumps(games_dict, indent=3))
+
+
+def get_score(game):
+    return 1, 0
 
 
 CREATE_SQL = False
 CREATE_PLAYLIST_VIDEO_IDS = False
 CREATE_GAMES_JSON = True
 FIND_SCORES_AND_DATES = False
+TESTING = False
 
 
 def main():
@@ -420,9 +534,17 @@ def main():
     if CREATE_PLAYLIST_VIDEO_IDS:
         update_jsonfiles()
     if CREATE_GAMES_JSON:
-        create_games_json_file()
+        create_games_json_file(cancel=False)
     if FIND_SCORES_AND_DATES:
-        pass
+        find_scores_and_dates()
+    if TESTING:
+        with open("games.json", "r", encoding="utf-8") as json_file:
+            games_dict = json.load(json_file)
+            get_score(games_dict["game0"])
+
+        api_call = requests.get("https://api.openligadb.de/getmatchdata/bl1/2022/8")
+        games_dict = api_call.json()
+        print(games_dict)
 
 
 if __name__ == "__main__":

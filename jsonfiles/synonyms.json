@@ -2,10 +2,11 @@
    "1. FC Heidenheim 1846": [
       "1. FC Heidenheim",
       "1. FC Heidenheim 1846",
-      "Heidenheim"
+      "Heidenheim",
+      "FC Heidenheim"
    ],
-   "1. FC K\u00f6ln": [
-      "1. FC K\u00f6ln"
+   "1. FC Köln": [
+      "1. FC Köln"
    ],
    "1. FC Union Berlin": [
       "1. FC Union",
@@ -16,7 +17,8 @@
    "1. FSV Mainz 05": [
       "1. FSV Mainz 05",
       "FSV Mainz 05",
-      "Mainz 05"
+      "Mainz 05",
+      "1.  FSV Mainz 05"
    ],
    "Arminia Bielefeld": [
       "Arminia Bielefeld"
@@ -29,15 +31,18 @@
       "Bayer 04 Leverkusen",
       "Bayer Leverkusen"
    ],
-   "FC Bayern M\u00fcnchen": [
-      "Bayern M\u00fcnchen",
+   "FC Bayern München": [
+      "Bayern München",
       "FC Bayern",
-      "FC Bayern M\u00fcnchen"
+      "FC Bayern München"
    ],
-   "Borussia M\u00f6nchengladbach": [
+   "Borussia Mönchengladbach": [
       "Borussia M'gladbach",
-      "Borussia M\u00f6nchengladbach",
-      "Gladbach"
+      "Borussia Mönchengladbach",
+      "Gladbach",
+      "Borussia M’gladbach",
+      "Borussia M‘gladbach",
+      "Borussia Mönchengaldbach"
    ],
    "Eintracht Frankfurt": [
       "Eintracht Frankfurt"
@@ -49,9 +54,9 @@
       "FC Schalke 04",
       "Schalke 04"
    ],
-   "SpVgg Greuther F\u00fcrth": [
-      "Greuther F\u00fcrth",
-      "SpVgg Greuther F\u00fcrth"
+   "SpVgg Greuther Fürth": [
+      "Greuther Fürth",
+      "SpVgg Greuther Fürth"
    ],
    "Hertha BSC": [
       "Hertha BSC"
@@ -100,12 +105,12 @@
       "1. FC Magdeburg",
       "Magdeburg"
    ],
-   "1. FC N\u00fcrnberg": [
-      "1. FC N\u00fcrnberg",
-      "N\u00fcrnberg"
+   "1. FC Nürnberg": [
+      "1. FC Nürnberg",
+      "Nürnberg"
    ],
-   "1. FC Saarbr\u00fccken": [
-      "1. FC Saarbr\u00fccken"
+   "1. FC Saarbrücken": [
+      "1. FC Saarbrücken"
    ],
    "BSV SW Rehden": [
       "BSV SW Rehden"
@@ -144,8 +149,8 @@
       "FC Ingolstadt 04",
       "Ingolstadt"
    ],
-   "FC Rot-Wei\u00df Koblenz": [
-      "FC Rot-Wei\u00df Koblenz"
+   "FC Rot-Weiß Koblenz": [
+      "FC Rot-Weiß Koblenz"
    ],
    "FC St. Pauli": [
       "FC St. Pauli",
@@ -159,15 +164,15 @@
    "FC Viktoria 1889 Berlin": [
       "FC Viktoria 1889 Berlin"
    ],
-   "FC Viktoria K\u00f6ln": [
-      "FC Viktoria K\u00f6ln"
+   "FC Viktoria Köln": [
+      "FC Viktoria Köln"
    ],
    "FC-Astoria Walldorf": [
       "FC-Astoria Walldorf"
    ],
-   "Fortuna D\u00fcsseldorf": [
-      "Fortuna D\u00fcsseldorf",
-      "D\u00fcsseldorf"
+   "Fortuna Düsseldorf": [
+      "Fortuna Düsseldorf",
+      "Düsseldorf"
    ],
    "Hamburger SV": [
       "Hamburger SV",
@@ -178,13 +183,16 @@
       "Hannover"
    ],
    "Hansa Rostock": [
-      "Hansa Rostock"
+      "Hansa Rostock",
+      "F.C. Hansa Rostock"
    ],
    "Holstein Kiel": [
-      "Holstein Kiel"
+      "Holstein Kiel",
+      "Holstein Kie"
    ],
    "Jahn Regensburg": [
-      "Jahn Regensburg"
+      "Jahn Regensburg",
+      "SSV Jahn Regensburg"
    ],
    "Karlsruher SC": [
       "Karlsruher SC",
@@ -193,14 +201,16 @@
    "Kickers Offenbach": [
       "Kickers Offenbach"
    ],
-   "Preu\u00dfen M\u00fcnster": [
-      "Preu\u00dfen M\u00fcnster"
+   "Preußen Münster": [
+      "Preußen Münster",
+      "SC Preußen Münster"
    ],
    "Rostocker FC": [
       "Rostocker FC"
    ],
    "Rot-Weiss Essen": [
-      "Rot-Weiss Essen"
+      "Rot-Weiss Essen",
+      "Rot-Weiß Essen"
    ],
    "SC Paderborn 07": [
       "SC Paderborn 07",
@@ -215,8 +225,8 @@
    "SV Oberachern": [
       "SV Oberachern"
    ],
-   "SV R\u00f6dinghausen": [
-      "SV R\u00f6dinghausen"
+   "SV Rödinghausen": [
+      "SV Rödinghausen"
    ],
    "SV Sandhausen": [
       "SV Sandhausen",
@@ -244,22 +254,58 @@
    "TSG Neustrelitz": [
       "TSG Neustrelitz"
    ],
-   "TSV 1860 M\u00fcnchen": [
-      "TSV 1860 M\u00fcnchen"
+   "TSV 1860 München": [
+      "TSV 1860 München"
    ],
    "TSV Schott Mainz": [
       "TSV Schott Mainz"
    ],
-   "TuS Bersenbr\u00fcck": [
-      "TuS Bersenbr\u00fcck"
+   "TuS Bersenbrück": [
+      "TuS Bersenbrück"
    ],
    "TuS Makkabi Berlin": [
       "TuS Makkabi Berlin"
    ],
-   "VfB L\u00fcbeck": [
-      "VfB L\u00fcbeck"
+   "VfB Lübeck": [
+      "VfB Lübeck"
    ],
-   "VfL Osnabr\u00fcck": [
-      "VfL Osnabr\u00fcck"
+   "VfL Osnabrück": [
+      "VfL Osnabrück"
+   ],
+   "TuS Koblenz": [
+      "TuS Koblenz"
+   ],
+   "SV Meppen": [
+      "SV Meppen"
+   ],
+   "Alemannia Aachen": [
+      "Alemannia Aachen"
+   ],
+   "1. FC Phönix Lübeck": [
+      "1. FC Phönix Lübeck"
+   ],
+   "FC 08 Villingen": [
+      "FC 08 Villingen"
+   ],
+   "VfR Aalen": [
+      "VfR Aalen"
+   ],
+   "Greifswalder FC" : [
+      "Greifswalder FC"
+   ],
+   "SSV Ulm": [
+      "SSV Ulm"
+   ],
+   "Hallescher FC": [
+      "Hallescher FC"
+   ],
+   "Würzburger Kickers": [
+      "Würzburger Kickers"
+   ],
+   "RSV Eintracht": [
+      "RSV Eintracht"
+   ],
+   "Atlas Delmenhorst": [
+      "Atlas Delmenhorst"
    ]
 }
