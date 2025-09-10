@@ -6,7 +6,8 @@
       "FC Heidenheim"
    ],
    "1. FC Köln": [
-      "1. FC Köln"
+      "1. FC Köln",
+      "1.FC Köln"
    ],
    "1. FC Union Berlin": [
       "1. FC Union",
@@ -18,7 +19,8 @@
       "1. FSV Mainz 05",
       "FSV Mainz 05",
       "Mainz 05",
-      "1.  FSV Mainz 05"
+      "1.  FSV Mainz 05",
+      "1.FSV Mainz 05"
    ],
    "Arminia Bielefeld": [
       "Arminia Bielefeld"
@@ -42,7 +44,8 @@
       "Gladbach",
       "Borussia M’gladbach",
       "Borussia M‘gladbach",
-      "Borussia Mönchengaldbach"
+      "Borussia Mönchengaldbach",
+      "Borussia Mönchengladbac"
    ],
    "Eintracht Frankfurt": [
       "Eintracht Frankfurt"
@@ -159,16 +162,19 @@
       "St. Pauli"
    ],
    "FC Teutonia Ottensen": [
-      "FC Teutonia Ottensen"
+      "FC Teutonia Ottensen",
+      "Teutonia Ottensen"
    ],
    "FC Viktoria 1889 Berlin": [
       "FC Viktoria 1889 Berlin"
    ],
    "FC Viktoria Köln": [
-      "FC Viktoria Köln"
+      "FC Viktoria Köln",
+      "Viktoria Köln"
    ],
    "FC-Astoria Walldorf": [
-      "FC-Astoria Walldorf"
+      "FC-Astoria Walldorf",
+      "FC Astoria Walldorf"
    ],
    "Fortuna Düsseldorf": [
       "Fortuna Düsseldorf",
@@ -220,7 +226,8 @@
       "SGS Essen"
    ],
    "SV Elversberg": [
-      "SV Elversberg"
+      "SV Elversberg",
+      "SV 07 Elversberg"
    ],
    "SV Oberachern": [
       "SV Oberachern"
@@ -258,7 +265,8 @@
       "TSV 1860 München"
    ],
    "TSV Schott Mainz": [
-      "TSV Schott Mainz"
+      "TSV Schott Mainz",
+      "TSV SCHOTT Mainz"
    ],
    "TuS Bersenbrück": [
       "TuS Bersenbrück"
@@ -294,7 +302,8 @@
       "Greifswalder FC"
    ],
    "SSV Ulm": [
-      "SSV Ulm"
+      "SSV Ulm",
+      "SSV Ulm 1846"
    ],
    "Hallescher FC": [
       "Hallescher FC"
@@ -307,5 +316,36 @@
    ],
    "Atlas Delmenhorst": [
       "Atlas Delmenhorst"
+   ],
+   "FC Gütersloh": [
+      "FC Gütersloh"
+   ],
+   "SG Sonnenhof Großaspach": [
+      "SG Sonnenhof Großaspach"
+   ],
+   "FK Pirmasens": [
+      "FK Pirmasens"
+   ],
+   "BFC Dynamo": [
+      "BFC Dynamo"
+   ],
+   "Bahlinger SC": [
+      "Bahlinger SC"
+   ],
+   "SV Hemelingen": [
+      "SV Hemelingen"
+   ],
+   "Eintracht Norderstedt": [
+      "Eintracht Norderstedt"
+   ],
+   "Sportfreunde Lotte": [
+      "Sportfreunde Lotte"
+   ],
+   "FV Illertissen": [
+      "FV Illertissen"
+   ],
+   "FV Engers": [
+      "FV Engers",
+      "FV Engers 07"
    ]
 }

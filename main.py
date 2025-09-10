@@ -16,36 +16,37 @@ async def collect_data_from_videoIds(videoIds, videoIds_dict, playlistIds_dict, 
 
     games = []
 
-    #connector=aiohttp.TCPConnector(limit=200)
+    #connector=aiohttp.TCPConnector(limit=len(videoIds))
     async with aiohttp.ClientSession() as session:
         tasks = get_game_tasks(session, videoIds)
-        responses = await asyncio.gather(*tasks)
-        with tqdm(total=len(responses), desc="Processing Videos", leave=False) as probar:
-            for response in responses:
-                snippet = await response.text()
-                if scrape_protection_detected:
-                    continue
-
-                url = str(response.request_info.url)
-
-                videoIdIdx = url.find("watch?v=") + len("watch?v=")
-                videoId = url[videoIdIdx:videoIdIdx+11]
-                playlistId = videoIds_dict[videoId]
-                playlist_number = playlistIds_dict[playlistId]["playlist_number"]
-                index = playlistIds_dict[playlistId]["index"]
-
-                league, season = get_league_season(playlist_number, index)
+        with tqdm(total=len(videoIds), desc="Processing Videos", leave=False) as probar:
+            for future in asyncio.as_completed(tasks):
+                response = await future
                 try:
+                    snippet = await response.text(encoding='utf-8')
+                    if scrape_protection_detected:
+                        continue
+
+                    url = str(response.request_info.url)
+                    videoIdIdx = url.find("watch?v=") + len("watch?v=")
+                    videoId = url[videoIdIdx:videoIdIdx+11]
+                    playlistId = videoIds_dict[videoId]
+                    playlist_number = playlistIds_dict[playlistId]["playlist_number"]
+                    index = playlistIds_dict[playlistId]["index"]
+                    if index == -1:
+                        index = playlistIds_dict["Supercup"]["videoIds"].index(videoId)
+
+                    league, season = get_league_season(playlist_number, index)
+                    
                     game = collect_scrape_protection(snippet, league, season, playlistId)
                     game["video_id"] = videoId
+                    games.append(game)
                 except Exception as e:
                     if cancel:
                         scrape_protection_detected = True
-                    print(f"Timeout, skipping video {videoId}")
-                    with open("skipped/snippet.txt", "w", encoding="utf-8") as json_file:
-                        json.dump(snippet, json_file, indent=2)
-                games.append(game)
-                probar.update(1)
+                    tqdm.write(f"Timeout, skipping video: {videoId}, [{e}]")
+                finally:
+                    probar.update(1)
 
         return games
 
@@ -148,72 +149,17 @@ def collect_scrape_protection(snippet, league, season, playlist_id=None):
 
     return game
 
-def collect_data_game(snippet, league, season, playlist_id=None):
-    global once
-    snippet = snippet[snippet.find("""videoDetails":""") + len("""videoDetails":"""):]
+
+
+def get_synonym(team, synonyms):
+    for real_team in synonyms:
+        synonym = synonyms[real_team]
+        if team in synonym:
+            return real_team
+    else:
+        print(f"{team} not found")
+        return None
     
-    bracketsOpen = 0
-    for idx, character in enumerate(snippet):
-        if character == "{":
-            bracketsOpen += 1
-        elif character == "}":
-            bracketsOpen -= 1
-        if bracketsOpen == 0:
-            snippet = snippet[:idx+1]
-            break
-
-    snippet = snippet.replace("true", "True")
-    snippet = snippet.replace("false", "False")
-    videoDetails = ast.literal_eval(snippet)
-    if not once:
-        with open("test.json", "w", encoding="utf-8") as json_file:
-            json.dump(videoDetails, json_file, indent=2)
-        once = True
-
-    game = dict()
-    game["videoId"] = videoDetails.get("videoId")
-    if game["videoId"] is None:
-        raise Exception("Scrape Protection Detected!")
-
-    game["title"] = videoDetails.get("title")
-    if game["title"] is None:
-        raise Exception("Scrape Protection Detected!")
-
-    home_team, away_team = get_home_away_team(game["title"])
-    game["home_team"] = home_team
-    game["away_team"] = away_team
-
-    game["int_seconds"] = videoDetails.get("lengthSeconds")
-    if game["int_seconds"] is not None: game["int_seconds"] = int(game["int_seconds"])
-    #if game["int_seconds"] is None: print("int_seconds: " + game["video_id"])
-
-    game["keywords"] = videoDetails.get("keywords")
-    #if game["keywords"] is None: print("keywords: " + game["video_id"])
-
-    game["description"] = videoDetails.get("shortDescription")
-    #if game["description"] is None: print("description: " + game["video_id"])
-
-    #game["thumbnail"] = videoDetails["thumbnail"]["thumbnails"]
-    #if game["thumbnail"] is None: print(game["video_id"])
-
-    #idx = find_index_helper(videoDetails["subtitle"]["runs"])
-    #game["int_views"] = int(snippet["subtitle"]["runs"][idx]["text"].split()[0].replace('.', ''))
-    game["int_views"] = videoDetails.get("viewCount")
-    if game["int_views"] is not None: game["int_views"] = int(game["int_views"])
-    #if game["int_views"] is None: print("int_views: " + game["video_id"])
-
-    game["competition"] = league
-    game["season"] = season
-    game["playlist_id"] = playlist_id
-
-    return game
-
-def find_index_helper(l):
-    for index, e in enumerate(l):
-        if 'Aufrufe' in e.get('text', ''):
-            return index
-    return -1
-
 def get_home_away_team(title):
     if title is None:
         return
@@ -245,16 +191,16 @@ def get_home_away_team(title):
             home_team = team
             break
     else:
-        print(team1)  # print debug
-        print(title)
+        tqdm.write(team1)  # print debug
+        tqdm.write(title)
     for team in synonyms:
         synonym = synonyms[team]
         if team2 in synonym:
             away_team = team
             break
     else:
-        print(team2)  # print debug
-        print(title)
+        tqdm.write(team2)  # print debug
+        tqdm.write(title)
 
     if home_team is None or away_team is None:
         raise Exception("Synonym Missing")
@@ -300,6 +246,13 @@ def get_urls_from_txt(playlist_number):
                 file = f.readlines()
                 for line in file:
                     urls.append(line.strip())
+        case 7:
+            with open("playlists/Season2526.txt", "r") as f:
+                file = f.readlines()
+                for line in file:
+                    urls.append(line.strip())
+        case _:
+            urls = []
     return urls
 
 
@@ -318,6 +271,8 @@ def get_league_season(playlist_number, idx):
                     season = "2023/24"
                 case 3:
                     season = "2024/25"
+                case 4:
+                    season = "2025/26"
         case 0:
             league = "Bundesliga"
             season = "2021/22"
@@ -338,6 +293,8 @@ def get_league_season(playlist_number, idx):
                     season = "2023/24"
                 case 3:
                     season = "2024/25"
+                case 4:
+                    season = "2025/26"
         case 4:
             league = "DFB-Pokal"
             match idx:
@@ -347,6 +304,8 @@ def get_league_season(playlist_number, idx):
                     season = "2023/24"
                 case 2:
                     season = "2024/25"
+                case 3:
+                    season = "2025/26"
         case 5:
             league = "Relegation"
             match idx:
@@ -358,44 +317,27 @@ def get_league_season(playlist_number, idx):
                     season = "2023/24"
                 case 3:
                     season = "2024/25"
+                case 4:
+                    season = "2025/26"
         case 6:
             league = "Bundesliga"
             season = "2024/25"
+        case 7:
+            league = "Bundesliga"
+            season = "2025/26"
     return league, season
 
 
 # MAIN FUNCTIONS
-def create_sql():
-    sql_string = """INSERT INTO all_data (title, home_team, away_team, int_views, int_seconds, competition, season, video_id) VALUES """
-
-    with open("games.json", "r", encoding="utf-8") as json_file:
-        games_dict = json.load(json_file)
-        for key, game in games_dict.items():
-            title = game["title"]
-            home = game["home_team"]
-            away = game["away_team"]
-            views = game["int_views"]
-            seconds = game["int_seconds"]
-            competition = game["competition"]
-            season = game["season"]
-            video_id = game["video_id"]
-
-            sql_string += f"""("{title}", "{home}", "{away}", {views}, {seconds}, "{competition}", "{season}", "{video_id}"),"""
-
-    sql_string = sql_string[:-1]
-    sql_string += ";"
-
-    sql_string = sql_string.replace('#', '\\#')
-
-    with open("sql_string.txt", "w", encoding="utf-8") as sqlFile:
-        sqlFile.write(sql_string)
-
-
-def update_jsonfiles(playlists=None):
+def update_jsonfiles(playlists_numbers=None):
     playlist_dict = dict()
     videoIds_dict = dict()
-    for playlist_number in range(7):
-        print(f"Playlist Group {playlist_number + 1}/7")
+    
+    p_numbers = range(8)
+    if playlists_numbers is not None:
+        p_numbers = playlists_numbers
+    for playlist_number in p_numbers:
+        print(f"Playlist Group {playlist_number + 1}/{len(p_numbers)}")
         urls = get_urls_from_txt(playlist_number)
 
         for idx, url in enumerate(urls):
@@ -422,16 +364,32 @@ def update_jsonfiles(playlists=None):
         for idx, videoId in enumerate(videoIds):
             videoIds_dict[videoId] = mock_playlist_id
             playlist_dict[mock_playlist_id]["playlist_number"] = -1
-            playlist_dict[mock_playlist_id]["index"] = idx
+            playlist_dict[mock_playlist_id]["index"] = -1
             playlist_dict[mock_playlist_id]["videoIds"].append(videoId)
-
-    videoIds_json = json.dumps(videoIds_dict, indent=3)
+    
+    videoIds_data = videoIds_dict
+    if playlists_numbers is not None:
+        with open("jsonfiles/videoId_to_playlistId.json", "r", encoding="utf-8") as json_file:
+            videoIds_data = json.load(json_file)
+            for vId in videoIds_dict:
+                videoIds_data[vId] = videoIds_dict[vId]
+    
+    playlist_data = playlist_dict
+    if playlists_numbers is not None:
+        with open("jsonfiles/playlistIds.json", "r", encoding="utf-8") as json_file:
+            playlist_data = json.load(json_file)
+            for pId in playlist_dict:
+                playlist_data[pId] = playlist_dict[pId]
+    
+    videoIds_json = json.dumps(videoIds_data, indent=3)
     with open("jsonfiles/videoId_to_playlistId.json", "w") as json_file:
         json_file.write(videoIds_json)
 
-    playlist_ids_json = json.dumps(playlist_dict, indent=3)
+    playlist_ids_json = json.dumps(playlist_data, indent=3)
     with open("jsonfiles/playlistIds.json", "w") as json_file:
         json_file.write(playlist_ids_json)
+        
+
 
 
 def create_games_json_file(searchIds=None, cancel=True):
@@ -469,59 +427,131 @@ def create_games_json_file(searchIds=None, cancel=True):
 
     games.reverse()
 
-    games_file = "games.json"
+    games_file = "data/games.json"
     if scrape_protection_detected:
         games_file = "games_emergency.json"
 
+    
+
     with open(games_file, "r", encoding="utf-8") as json_file:
         games_dict = json.load(json_file)
-        date_now = datetime.now().strftime("%d.%m.%Y")
-        if date_now in games_dict:
-            for idx, game_dict in enumerate(games):
-                v_id = game_dict["video_id"] 
-                if v_id in games_dict[date_now]:
-                    games_dict[date_now][v_id]["int_views"] = game_dict["int_views"]
-                else:
-                    games_dict[date_now][v_id] = game_dict
-        else:
-            games_dict[date_now] = dict()
-            for idx, game_dict in enumerate(games):
-                games_dict[date_now][game_dict["video_id"]] = game_dict
 
+        for game_dict in games:
+            if game_dict["video_id"] not in games_dict:
+                skipped_keys = ["int_views", "upload_d", "game_id"]
+                updated_game_dict = {key: value for key, value in game_dict.items() if key not in skipped_keys}
+                games_dict[game_dict["video_id"]] = updated_game_dict
     
     with open(games_file, "w", encoding="utf-8") as json_file:
-        json.dump(games_dict, json_file, indent=3)
+        json.dump(games_dict, json_file, indent=3, ensure_ascii=False)
+        
+    measurement_file = "data/measurement.json"
+    with open(measurement_file, "r", encoding="utf-8") as json_file:
+        measurement_dict = json.load(json_file)
+
+    date_now = datetime.now().strftime("%d.%m.%Y")
+    if date_now not in measurement_dict:
+        measurement_dict[date_now] = dict()
+    
+    new_measurement = dict()
+    for game_dict in games:
+        new_measurement[game_dict["video_id"]] =   {"upload_d": game_dict["upload_d"],
+                                                    "int_views": game_dict["int_views"]}
+    
+    measurement_dict[date_now].update(new_measurement)
+
+    with open(measurement_file, "w", encoding="utf-8") as json_file:
+        json.dump(measurement_dict, json_file, indent=3, ensure_ascii=False)
+    
+    
 
 
-def find_scores_and_dates(video_ids=None):
-    games = []
-    not_games = []
-    with open("games.json", "r", encoding="utf-8") as json_file:
-        games_dict = json.load(json_file)
-        if video_ids is not None:
-            for key, game in games_dict.items():
-                if game["videoId"] in video_ids:
-                    games.append(game)
-                else:
-                    not_games.append(game)
-        else:
-            games = games_dict.values()
+def find_scores():
+    params = {"bl1": ["2021", "2022", "2023", "2024", "2025"],
+     "bl2": ["2021", "2022", "2023", "2024", "2025"],
+     "dfb": ["2023", "2024", "2025"]}
+    for comp, yr_list in params.items():
+        for yr in yr_list:
+            api_call = requests.get(f"https://api.openligadb.de/getmatchdata/{comp}/{yr}")
+            api_call.encoding = "utf-8"
+            scores_dict = api_call.json()
 
-        for game in games:
-            score = get_score(game)
+            competition_translate = {"bl1": "Bundesliga",
+                                    "bl2": "2. Bundesliga",
+                                    "dfb": "DFB-Pokal"}
 
-            game["home_score"] = score[0]
-            game["away_score"] = score[1]
+            vid_scores = dict()
+            with open("data/games.json", "r", encoding="utf-8") as json_file:
+                games_dict = json.load(json_file)
+                synonyms = get_synonyms()
 
-    with open("games_old.json", "w", encoding="utf-8") as json_file:
-        json_file.write(json.dumps(games_dict, indent=3))
+                for score_dict in scores_dict:
+                    home_team = score_dict["team1"]["teamName"]
+                    away_team = score_dict["team2"]["teamName"]
+
+                    actual_home_team = get_synonym(home_team, synonyms)
+                    home_team = actual_home_team if actual_home_team else home_team
+
+                    actual_away_team = get_synonym(away_team, synonyms)
+                    away_team = actual_away_team if actual_away_team else away_team
+
+                    competition_short = score_dict["leagueShortcut"]
+                    competition = competition_translate[competition_short]
+
+                    season_int = score_dict["leagueSeason"]
+                    season = str(season_int) + "/" + str((season_int % 100) + 1)
+
+                    score1 = None
+                    score2 = None
+                    for result in score_dict["matchResults"]:
+                        if result["resultName"] == "Endergebnis":
+                            score1 = result["pointsTeam1"]
+                            score2 = result["pointsTeam2"]
+                            break
+
+                    for video_id, game_dict in games_dict.items():
+                        home_team_g = game_dict["home_team"]
+                        away_team_g = game_dict["away_team"]
+                        competition_g = game_dict["competition"]
+                        season_g = game_dict["season"]
+                        if home_team_g == home_team and away_team_g == away_team and competition_g == competition and season_g == season:
+                            match_video_id = video_id
+                            vid_scores[match_video_id] = dict()
+                            vid_scores[match_video_id]["score1"] = score1
+                            vid_scores[match_video_id]["score2"] = score2
+                            break
+                    else:
+                        print(f"Game not Found: {home_team} {away_team} {competition} {season}")
+            
+            with open("data/scores.json", "r", encoding="utf-8") as json_file:
+                scores_dict = json.load(json_file)
+            with open("data/scores.json", "w", encoding="utf-8") as f:
+                json.dump(scores_dict | vid_scores, f, indent=3, ensure_ascii=False)
 
 
-def get_score(game):
-    return 1, 0
+def display_missing_scores():
+    with open("data/games.json", "r", encoding="utf-8") as games_file, open("data/scores.json", "r", encoding="utf-8") as scores_file, open("no_scores.json", "w", encoding="utf-8") as f, open("scores_append.json", "w", encoding="utf-8") as f_append:
+        games_dict = json.load(games_file)
+        scores_dict = json.load(scores_file)
 
+        missing_videos = []
+        scores_append = dict()
+        for v_id, game_dict in games_dict.items():
+            if v_id not in scores_dict:
+                missing_videos.append(game_dict)
+                scores_append[v_id] = {"score1": None,
+                                        "score2": None}
+        
+        json.dump(missing_videos, f, indent=3, ensure_ascii=False)
+        json.dump(scores_append, f_append, indent=3, ensure_ascii=False)
 
-CREATE_SQL = False
+def append_scores():
+    with open("data/scores.json", "r", encoding="utf-8") as scores_file, open("scores_append.json", "r", encoding="utf-8") as scores_append:
+        scores_append_dict = json.load(scores_append)
+        scores_dict = json.load(scores_file)
+    with open("data/scores.json", "w", encoding="utf-8") as scores_file_w:
+        json.dump(scores_dict | scores_append_dict, scores_file_w, indent=3, ensure_ascii=False)
+
 CREATE_PLAYLIST_VIDEO_IDS = False
 CREATE_GAMES_JSON = True
 FIND_SCORES_AND_DATES = False
@@ -529,23 +559,15 @@ TESTING = False
 
 
 def main():
-    if CREATE_SQL:
-        create_sql()
     if CREATE_PLAYLIST_VIDEO_IDS:
         update_jsonfiles()
     if CREATE_GAMES_JSON:
         create_games_json_file(cancel=False)
     if FIND_SCORES_AND_DATES:
-        find_scores_and_dates()
+        find_scores()
     if TESTING:
-        with open("games.json", "r", encoding="utf-8") as json_file:
-            games_dict = json.load(json_file)
-            get_score(games_dict["game0"])
-
-        api_call = requests.get("https://api.openligadb.de/getmatchdata/bl1/2022/8")
-        games_dict = api_call.json()
-        print(games_dict)
-
+        pass
+        
 
 if __name__ == "__main__":
     main()
